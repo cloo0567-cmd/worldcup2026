@@ -21,11 +21,10 @@
     .tab-btn:hover { color: #1a5fa8; }
     .tab-btn.active { color: #0a1f5c; border-bottom-color: #1a5fa8; }
 
+    /* GIRONI */
     .legend { display: flex; gap: 20px; padding: 10px 20px; font-size: 11px; color: #7a90b8; border-bottom: 1px solid #dde6f5; background: #fff; flex-wrap: wrap; }
     .legend-item { display: flex; align-items: center; gap: 6px; }
     .legend-bar { width: 4px; height: 16px; border-radius: 2px; }
-
-    /* GIRONI */
     .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; padding: 20px; }
     .group-card { background: #fff; border: 1px solid #dde6f5; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(10,31,92,0.07); }
     .group-header { background: linear-gradient(90deg, #0a1f5c 0%, #1a5fa8 100%); padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
@@ -69,104 +68,96 @@
     /* ══════════════════════════════════
        TABELLONE
        ══════════════════════════════════ */
-    #tab-tabellone { background: #f0f4fa; padding: 24px 0 48px; }
+    #tab-tabellone { background: #f0f4fa; padding: 20px 0 48px; }
 
-    .bk-title { text-align: center; padding: 0 0 20px; }
+    .bk-title { text-align: center; padding: 0 0 18px; }
     .bk-title span { display: inline-block; background: #fff; border: 1px solid #dde6f5; border-radius: 20px; padding: 5px 18px; font-size: 10px; font-weight: 800; color: #7a90b8; letter-spacing: 3px; text-transform: uppercase; }
 
-    .bk-scroll { overflow-x: auto; padding: 0 12px 8px; }
+    .bk-scroll { overflow-x: auto; padding: 0 16px 16px; }
 
-    /* Layout: position:relative container, colonne absolute */
-    .bk-stage {
-      display: flex;
-      align-items: flex-start;
-      gap: 6px;
-      /* min-width calcolato via JS */
+    /* ── GRIGLIA PRINCIPALE ──
+       9 colonne: R32-L | R16-L | QF-L | SF-L | CENTRO | SF-R | QF-R | R16-R | R32-R
+       La colonna CENTRO contiene Finale in cima + 3°posto sotto
+    */
+    .bk-grid {
+      display: grid;
+      grid-template-columns: 160px 160px 160px 160px 180px 160px 160px 160px 160px;
+      grid-template-rows: auto;
+      gap: 0 8px;
+      min-width: 1460px;
+      align-items: start;
     }
 
+    /* Intestazioni colonne */
+    .bk-col-head {
+      text-align: center;
+      font-size: 9px; font-weight: 800; color: #aab8d4;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding-bottom: 10px;
+    }
+
+    /* Ogni colonna è un flex column */
     .bk-col {
-      flex-shrink: 0;
       display: flex;
       flex-direction: column;
     }
 
-    .bk-col-label {
-      font-size: 9px; font-weight: 800; color: #aab8d4;
-      letter-spacing: 2px; text-transform: uppercase;
-      text-align: center; padding-bottom: 8px; white-space: nowrap;
+    /* ── CARD ── */
+    .mk {
+      background: #fff;
+      border: 1px solid #dde6f5;
+      border-radius: 7px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(10,31,92,0.06);
+      transition: border-color .15s;
+      width: 100%;
     }
+    .mk:hover { border-color: #93b4d8; }
+    .mk.live   { border-color: #16a34a; box-shadow: 0 0 8px rgba(22,163,74,0.18); }
+    .mk.gold   { border-color: #c9a400; background: #fffcf0; }
+    .mk.bronze { border-color: #9e7b5a; background: #fdf8f4; }
 
-    .bk-col-body { position: relative; flex: 1; }
-
-    /* Card */
-    .bk-card {
-      position: absolute; left: 0; right: 0;
-      background: #fff; border: 1px solid #dde6f5; border-radius: 8px;
-      overflow: hidden; box-shadow: 0 1px 4px rgba(10,31,92,0.06);
-    }
-    .bk-card:hover { border-color: #93b4d8; }
-    .bk-card.live  { border-color: #16a34a; box-shadow: 0 0 8px rgba(22,163,74,0.18); }
-    .bk-card.gold  { border-color: #c9a400; background: #fffcf0; }
-    .bk-card.bronze{ border-color: #9e7b5a; background: #fdf8f4; }
-
-    .bk-card-head {
+    .mk-head {
       background: #f5f8ff; border-bottom: 1px solid #eef2fb;
       padding: 3px 7px; display: flex; justify-content: space-between; align-items: center;
     }
-    .bk-card-id   { font-size: 8px; font-weight: 800; color: #b0bdd4; letter-spacing: 1px; }
-    .bk-card-date { font-size: 8px; color: #c8d4e4; }
-    .bk-live-tag  { color: #16a34a; font-size: 8px; font-weight: 800; animation: blink 1s infinite; }
-    .bk-ft-tag    { color: #b0bdd4; font-size: 8px; }
+    .mk-id   { font-size: 8px; font-weight: 800; color: #b0bdd4; letter-spacing: 1px; }
+    .mk-date { font-size: 8px; color: #c8d4e4; }
+    .mk-live { color: #16a34a; font-size: 8px; font-weight: 800; animation: blink 1s infinite; }
+    .mk-ft   { color: #b0bdd4; font-size: 8px; }
 
-    .bk-row { display: flex; align-items: center; gap: 6px; padding: 6px 7px; border-top: 1px solid #eef2fb; }
-    .bk-row:first-of-type { border-top: none; }
-    .bk-row.win { background: #f0fdf4; }
+    .mk-row { display: flex; align-items: center; gap: 5px; padding: 6px 7px; border-top: 1px solid #eef2fb; }
+    .mk-row:first-of-type { border-top: none; }
+    .mk-row.win { background: #f0fdf4; }
 
-    .bk-flag    { width: 20px; height: 13px; object-fit: cover; border-radius: 2px; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-    .bk-flag-ph { width: 20px; height: 13px; background: #e8edf5; border-radius: 2px; flex-shrink: 0; }
-    .bk-name { font-size: 11px; font-weight: 700; color: #1a2744; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .bk-name.slot   { color: #b8c8dc; font-weight: 500; font-size: 10px; font-style: italic; }
-    .bk-name.winner { color: #0a1f5c; }
-    .bk-score { font-size: 12px; font-weight: 900; color: #1a5fa8; min-width: 13px; text-align: right; flex-shrink: 0; }
-    .gold   .bk-score { color: #c9a400; }
-    .bronze .bk-score { color: #9e7b5a; }
+    .mk-flag    { width: 20px; height: 13px; object-fit: cover; border-radius: 2px; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    .mk-flag-ph { width: 20px; height: 13px; background: #e8edf5; border-radius: 2px; flex-shrink: 0; }
+    .mk-name { font-size: 11px; font-weight: 700; color: #1a2744; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mk-name.slot   { color: #b8c8dc; font-weight: 500; font-size: 10px; font-style: italic; }
+    .mk-name.winner { color: #0a1f5c; }
+    .mk-score { font-size: 12px; font-weight: 900; color: #1a5fa8; min-width: 13px; text-align: right; flex-shrink: 0; }
+    .gold   .mk-score { color: #c9a400; }
+    .bronze .mk-score { color: #9e7b5a; }
 
-    /* Separatore tra tabellone e sezione finale */
-    .bk-finals-sep {
-      margin: 0 12px;
-      border: none; border-top: 2px dashed #dde6f5;
-      padding-top: 24px;
+    /* Spacer verticale tra card nella stessa colonna */
+    .sp { flex-shrink: 0; }
+
+    /* Colonna centrale: Finale in alto, 3° posto sotto */
+    .bk-center-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
-    .bk-finals-title {
-      text-align: center; font-size: 10px; font-weight: 800;
-      color: #aab8d4; letter-spacing: 3px; text-transform: uppercase;
-      margin-bottom: 20px;
+    .bk-center-label {
+      font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+      text-align: center; padding-bottom: 6px;
     }
-    .bk-finals-row {
-      display: flex; gap: 24px; justify-content: center; align-items: flex-start; flex-wrap: wrap;
-    }
-    .bk-finals-block { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-    .bk-finals-block-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
-    .bk-finals-block-label.gold   { color: #c9a400; }
-    .bk-finals-block-label.bronze { color: #9e7b5a; }
+    .bk-center-label.gold   { color: #c9a400; }
+    .bk-center-label.bronze { color: #9e7b5a; }
+    .bk-center-sep { height: 24px; }
 
-    /* card statica (non absolute) per sezione finale */
-    .bk-card-static {
-      width: 210px; background: #fff; border: 1px solid #dde6f5;
-      border-radius: 8px; overflow: hidden; box-shadow: 0 1px 6px rgba(10,31,92,0.08);
-    }
-    .bk-card-static.gold   { border-color: #c9a400; background: #fffcf0; }
-    .bk-card-static.bronze { border-color: #9e7b5a; background: #fdf8f4; }
-    .bk-card-static .bk-card-head { background: #f5f8ff; border-bottom: 1px solid #eef2fb; padding: 4px 9px; display: flex; justify-content: space-between; align-items: center; }
-    .bk-card-static .bk-card-id   { font-size: 8px; font-weight: 800; color: #b0bdd4; letter-spacing: 1px; }
-    .bk-card-static .bk-card-date { font-size: 8px; color: #c8d4e4; }
-    .bk-card-static .bk-row { display: flex; align-items: center; gap: 6px; padding: 8px 9px; border-top: 1px solid #eef2fb; }
-    .bk-card-static .bk-row:first-of-type { border-top: none; }
-    .bk-card-static .bk-row.win { background: #f0fdf4; }
-    .gold   .bk-card-static .bk-score { color: #c9a400; }
-    .bronze .bk-card-static .bk-score { color: #9e7b5a; }
-
-    .bk-note { text-align: center; color: #aab8d4; font-size: 10px; padding: 20px 20px 0; font-style: italic; }
+    .bk-note { text-align: center; color: #aab8d4; font-size: 10px; padding: 16px 20px 0; font-style: italic; }
 
     .state-msg { padding: 60px 20px; text-align: center; color: #aab8d4; font-size: 14px; line-height: 2; }
     .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid #dde6f5; border-top-color: #1a5fa8; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px; }
@@ -187,7 +178,6 @@
   <div class="tab-btn" onclick="switchTab('tabellone',this)">🏆 Tabellone</div>
 </div>
 
-<!-- GIRONI -->
 <div id="tab-gironi">
   <div class="legend">
     <div class="legend-item"><div class="legend-bar" style="background:#22c55e"></div><span>Qualificate (1ª e 2ª)</span></div>
@@ -197,7 +187,6 @@
   <div id="groups-grid" class="groups-grid"><div class="state-msg"><div class="spinner"></div><br>Caricamento gironi...</div></div>
 </div>
 
-<!-- MIGLIORI TERZE -->
 <div id="tab-terze" style="display:none">
   <div class="thirds-page">
     <div class="thirds-info">Le <strong>8 migliori terze</strong> su 12 si qualificano. Criteri: punti → differenza reti → gol fatti.</div>
@@ -205,39 +194,30 @@
   </div>
 </div>
 
-<!-- TABELLONE -->
 <div id="tab-tabellone" style="display:none">
   <div class="bk-title"><span>Mondiale 2026 – Tabellone</span></div>
-
   <div class="bk-scroll">
-    <div class="bk-stage" id="bk-stage">
-      <div class="state-msg" style="width:100%"><div class="spinner"></div><br>Caricamento...</div>
+    <div class="bk-grid" id="bk-grid">
+      <div class="state-msg" style="grid-column:1/-1"><div class="spinner"></div><br>Caricamento...</div>
     </div>
   </div>
-
-  <!-- Finale + 3° posto sotto, separati e chiari -->
-  <div style="margin:28px 12px 0; padding:24px; background:#fff; border:1px solid #dde6f5; border-radius:12px; box-shadow:0 2px 10px rgba(10,31,92,0.07);" id="bk-finals-wrap" style="display:none">
-    <div class="bk-finals-title">🏆 Fase Finale</div>
-    <div class="bk-finals-row" id="bk-finals-row"></div>
-  </div>
-
-  <div class="bk-note">⚡ Slot in corsivo = posizione nel girone (es. 1A = 1° del Girone A). Aggiornamento automatico.</div>
+  <div class="bk-note">⚡ Slot in corsivo = posizione nel girone (es. 1A = 1° Girone A). Aggiornamento automatico.</div>
 </div>
 
 <script>
-// ─── STRUTTURA ────────────────────────────────────────────────────────────────
-const BRACKET = {
-  left: [
-    { r32:[{id:'M74',s1:'1E', s2:'3ABCDF',apiId:537415},{id:'M77',s1:'1I', s2:'3CDFGH',apiId:null  }], r16id:'M89',r16api:537375 },
-    { r32:[{id:'M73',s1:'2C', s2:'1D',    apiId:537417},{id:'M75',s1:'1F', s2:'2B',    apiId:537418}], r16id:'M90',r16api:537376 },
-    { r32:[{id:'M83',s1:'2K', s2:'2L',    apiId:null  },{id:'M84',s1:'1H', s2:'2J',    apiId:null  }], r16id:'M93',r16api:537379 },
-    { r32:[{id:'M81',s1:'1B', s2:'3BEFIJ',apiId:537421},{id:'M82',s1:'1G', s2:'3AEHIJ',apiId:null  }], r16id:'M94',r16api:537380 },
+// ── STRUTTURA ─────────────────────────────────────────────────────────────────
+const BK = {
+  L: [
+    { r32:[{id:'M74',s1:'GER', s2:'3ABCDF',api:537415},{id:'M77',s1:'1I',  s2:'3CDFGH',api:null  }], r16:{id:'M89',api:537375} },
+    { r32:[{id:'M73',s1:'RSA', s2:'CAN',   api:537417},{id:'M75',s1:'1F',  s2:'MAR',   api:537418}], r16:{id:'M90',api:537376} },
+    { r32:[{id:'M83',s1:'2K',  s2:'2L',    api:null  },{id:'M84',s1:'1H',  s2:'2J',    api:null  }], r16:{id:'M93',api:537379} },
+    { r32:[{id:'M81',s1:'USA', s2:'3BEFIJ',api:537421},{id:'M82',s1:'1G',  s2:'3AEHIJ',api:null  }], r16:{id:'M94',api:537380} },
   ],
-  right: [
-    { r32:[{id:'M76',s1:'1C', s2:'2F',    apiId:537423},{id:'M78',s1:'2E', s2:'2I',    apiId:null  }], r16id:'M91',r16api:537377 },
-    { r32:[{id:'M79',s1:'1A', s2:'3CEFHI',apiId:537425},{id:'M80',s1:'1L', s2:'3EHIJK',apiId:null  }], r16id:'M92',r16api:537378 },
-    { r32:[{id:'M86',s1:'1J', s2:'2H',    apiId:537427},{id:'M88',s1:'2D', s2:'2G',    apiId:null  }], r16id:'M95',r16api:537381 },
-    { r32:[{id:'M85',s1:'1K', s2:'3EFGLJ',apiId:537429},{id:'M87',s1:'2A', s2:'3DEIJL',apiId:null  }], r16id:'M96',r16api:537382 },
+  R: [
+    { r32:[{id:'M76',s1:'BRA', s2:'JPN',   api:537423},{id:'M78',s1:'2E',  s2:'2I',    api:null  }], r16:{id:'M91',api:537377} },
+    { r32:[{id:'M79',s1:'MEX', s2:'3CEFHI',api:537425},{id:'M80',s1:'1L',  s2:'3EHIJK',api:null  }], r16:{id:'M92',api:537378} },
+    { r32:[{id:'M86',s1:'ARG', s2:'2H',    api:537427},{id:'M88',s1:'2D',  s2:'2G',    api:null  }], r16:{id:'M95',api:537381} },
+    { r32:[{id:'M85',s1:'SUI', s2:'3EFGLJ',api:537429},{id:'M87',s1:'2A',  s2:'3DEIJL',api:null  }], r16:{id:'M96',api:537382} },
   ],
   qfL: [{id:'M97', api:537383},{id:'M98', api:537384}],
   qfR: [{id:'M99', api:537385},{id:'M100',api:537386}],
@@ -247,41 +227,42 @@ const BRACKET = {
   trd: {id:'M103',api:537389},
 };
 
-// Dimensioni fisse per calcolo posizione verticale
-const CH = 56;   // card height (px)
-const PG = 4;    // gap fra 2 card della stessa coppia
-const GG = 18;   // gap fra gruppi diversi
-const CW = 148;  // card width (px)
-// Altezza totale R32: 4 * (2*CH + PG + GG) - GG
-const TOTAL_H = 4 * (2*CH + PG + GG) - GG;
+// Altezze card e spaziatura
+// Ogni card ≈ 58px (head 22 + 2 righe 18px)
+// Coppia R32: 2 card + 4px gap = 120px
+// Gap tra coppie: 20px
+// Totale colonna R32: 4*(120+20)-20 = 540px
+const CH=58, PG=4, GG=20;
+function sp(px){ return `<div class="sp" style="height:${px}px"></div>`; }
 
-// Centro verticale della i-esima coppia R32 (0-indexed)
-function pairCY(i) { return i*(2*CH+PG+GG) + CH + PG/2; }
-// Centro verticale del i-esimo gruppo di 2 coppie (per QF)
-function qfCY(i)   { return (pairCY(i*2) + pairCY(i*2+1)) / 2; }
-// Centro verticale dell'intera colonna (per SF)
-const sfCY = TOTAL_H / 2;
+// Centro coppia i: i*(CH*2+PG+GG) + CH + PG/2
+function pairCY(i){ return i*(2*CH+PG+GG)+CH+PG/2; }
+// Centro tra coppie i*2 e i*2+1 (per QF)
+function qfCY(i){ return (pairCY(i*2)+pairCY(i*2+1))/2; }
+// Centro totale (per SF)
+const TOTAL = 4*(2*CH+PG+GG)-GG;
+const sfCY = TOTAL/2;
 
-const API = '/.netlify/functions/api';
-let allMatches = [], pollTimer = null;
+const API='/.netlify/functions/api';
+let allMatches=[], pollTimer=null;
 
-function switchTab(tab, el) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+function switchTab(tab,el){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
-  ['gironi','terze','tabellone'].forEach(t => {
-    document.getElementById('tab-'+t).style.display = t===tab?'':'none';
+  ['gironi','terze','tabellone'].forEach(t=>{
+    document.getElementById('tab-'+t).style.display=t===tab?'':'none';
   });
 }
 
-async function getMatches() {
-  const r = await fetch(`${API}?type=matches`);
-  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+async function getMatches(){
+  const r=await fetch(`${API}?type=matches`);
+  if(!r.ok) throw new Error(`HTTP ${r.status}`);
   return r.json();
 }
 
-// ─── GIRONI ──────────────────────────────────────────────────────────────────
-function buildGroupStandings(matches) {
-  const groups = {};
+// ── GIRONI ───────────────────────────────────────────────────────────────────
+function buildGS(matches){
+  const groups={};
   matches.filter(m=>m.stage==='GROUP_STAGE').forEach(m=>{
     const g=m.group; if(!g) return;
     if(!groups[g]) groups[g]={};
@@ -289,9 +270,9 @@ function buildGroupStandings(matches) {
       if(t&&t.id&&!groups[g][t.id]) groups[g][t.id]={team:t,played:0,won:0,draw:0,lost:0,goalsFor:0,goalsAgainst:0,points:0};
     });
     if(m.status==='FINISHED'&&m.score?.fullTime){
-      const hg=m.score.fullTime.home, ag=m.score.fullTime.away;
+      const hg=m.score.fullTime.home,ag=m.score.fullTime.away;
       if(hg!==null&&ag!==null&&m.homeTeam?.id&&m.awayTeam?.id){
-        const h=groups[g][m.homeTeam.id], a=groups[g][m.awayTeam.id];
+        const h=groups[g][m.homeTeam.id],a=groups[g][m.awayTeam.id];
         if(h&&a){
           h.played++;a.played++;h.goalsFor+=hg;h.goalsAgainst+=ag;a.goalsFor+=ag;a.goalsAgainst+=hg;
           if(hg>ag){h.won++;h.points+=3;a.lost++;}
@@ -304,29 +285,16 @@ function buildGroupStandings(matches) {
   const result={};
   Object.entries(groups).sort(([a],[b])=>a.localeCompare(b)).forEach(([gn,teams])=>{
     result[gn]=Object.values(teams).sort((a,b)=>{
-      if(b.points!==a.points) return b.points-a.points;
-      const gda=a.goalsFor-a.goalsAgainst, gdb=b.goalsFor-b.goalsAgainst;
-      if(gdb!==gda) return gdb-gda;
+      if(b.points!==a.points)return b.points-a.points;
+      const gda=a.goalsFor-a.goalsAgainst,gdb=b.goalsFor-b.goalsAgainst;
+      if(gdb!==gda)return gdb-gda;
       return b.goalsFor-a.goalsFor;
     }).map((t,i)=>({...t,position:i+1,goalDifference:t.goalsFor-t.goalsAgainst}));
   });
   return result;
 }
 
-function getBestThirds(gs) {
-  const t=[];
-  Object.entries(gs).forEach(([gn,table])=>{
-    if(table.length>=3) t.push({...table[2],groupLetter:gn.replace('GROUP_','')});
-  });
-  return t.sort((a,b)=>{
-    if(b.points!==a.points) return b.points-a.points;
-    const gda=a.goalsFor-a.goalsAgainst, gdb=b.goalsFor-b.goalsAgainst;
-    if(gdb!==gda) return gdb-gda;
-    return b.goalsFor-a.goalsFor;
-  });
-}
-
-function renderGroups(gs) {
+function renderGroups(gs){
   const grid=document.getElementById('groups-grid');
   const entries=Object.entries(gs);
   if(!entries.length){grid.innerHTML='<div class="state-msg">Nessun girone trovato</div>';return;}
@@ -352,14 +320,27 @@ function renderGroups(gs) {
   }).join('');
 }
 
-function renderBestThirds(gs) {
+function getBestThirds(gs){
+  const t=[];
+  Object.entries(gs).forEach(([gn,table])=>{
+    if(table.length>=3)t.push({...table[2],groupLetter:gn.replace('GROUP_','')});
+  });
+  return t.sort((a,b)=>{
+    if(b.points!==a.points)return b.points-a.points;
+    const gda=a.goalsFor-a.goalsAgainst,gdb=b.goalsFor-b.goalsAgainst;
+    if(gdb!==gda)return gdb-gda;
+    return b.goalsFor-a.goalsFor;
+  });
+}
+
+function renderBestThirds(gs){
   const thirds=getBestThirds(gs);
   const c=document.getElementById('thirds-content');
   if(!thirds.length){c.innerHTML='<div class="state-msg">Dati non ancora disponibili</div>';return;}
   c.innerHTML=`<table class="thirds-table">
     <thead><tr><th>#</th><th>GRP</th><th class="col-team">Squadra</th><th>G</th><th>V</th><th>P</th><th>S</th><th>GF</th><th>GS</th><th>DR</th><th>Pt</th><th>Stato</th></tr></thead>
     <tbody>${thirds.map((t,i)=>{
-      const adv=i<8; const dr=t.goalDifference>0?'+'+t.goalDifference:t.goalDifference;
+      const adv=i<8;const dr=t.goalDifference>0?'+'+t.goalDifference:t.goalDifference;
       const sep=i===8?`<tr class="qualifying-separator"><td colspan="12">⬆️ Qualificate &nbsp;|&nbsp; ⬇️ Eliminate</td></tr>`:'';
       return `${sep}<tr class="${adv?'advances':'eliminated'}">
         <td class="rank-num">${i+1}</td><td><span class="group-badge">GRP ${t.groupLetter}</span></td>
@@ -373,190 +354,171 @@ function renderBestThirds(gs) {
     }).join('')}</tbody></table>`;
 }
 
-// ─── CARD BUILDER ─────────────────────────────────────────────────────────────
-function apiM(id) { return id ? allMatches.find(m=>m.id===id)||null : null; }
+// ── CARD BUILDER ─────────────────────────────────────────────────────────────
+function am(id){ return id?allMatches.find(m=>m.id===id)||null:null; }
 
-function fmtDate(u) {
-  if(!u) return '';
+function fmtDate(u){
+  if(!u)return'';
   const d=new Date(u);
   return d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'})
         +' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
 }
 
-// Restituisce HTML stringa di una card (position:absolute) posizionata a top=cy-CH/2
-function card(label, s1, s2, apiId, topPx, extraCls='') {
-  const m = apiM(apiId);
-  let t1=null, t2=null, hg=null, ag=null, live=false, fin=false, dateStr='';
-  if(m) {
-    if(m.homeTeam?.id) t1=m.homeTeam;
-    if(m.awayTeam?.id) t2=m.awayTeam;
-    const ft=m.score?.fullTime;
-    hg=ft?.home??null; ag=ft?.away??null;
-    live=['IN_PLAY','PAUSED','LIVE'].includes(m.status);
-    fin=m.status==='FINISHED';
-    dateStr=fmtDate(m.utcDate);
-  }
-  const t1w=fin&&hg!==null&&hg>ag, t2w=fin&&ag!==null&&ag>hg;
-
-  function row(team,slot,score,isWin) {
-    const name=team?(team.shortName||team.tla||team.name):null;
-    const flag=team?.crest?`<img class="bk-flag" src="${team.crest}" alt="${team.tla||''}" onerror="this.outerHTML='<div class=bk-flag-ph></div>'">` :'<div class="bk-flag-ph"></div>';
-    const nm=name?`<span class="bk-name${isWin?' winner':''}">${name}</span>`:`<span class="bk-name slot">${slot}</span>`;
-    const sc=(fin&&score!==null&&score!==undefined)?`<span class="bk-score">${score}</span>`:'';
-    return `<div class="bk-row${isWin?' win':''}">${flag}${nm}${sc}</div>`;
-  }
-
-  return `<div class="bk-card${extraCls?' '+extraCls:''}${live?' live':''}" style="top:${topPx}px">
-    <div class="bk-card-head">
-      <span class="bk-card-id">${label}</span>
-      ${live?'<span class="bk-live-tag">● LIVE</span>':fin?'<span class="bk-ft-tag">FT</span>':`<span class="bk-card-date">${dateStr}</span>`}
-    </div>
-    ${row(t1,s1,hg,t1w)}
-    ${row(t2,s2,ag,t2w)}
-  </div>`;
-}
-
-// Card statica per la sezione finale (non absolute)
-function cardStatic(label, s1, s2, apiId, extraCls='') {
-  const m=apiM(apiId);
+function mkCard(label,s1,s2,apiId,cls=''){
+  const m=am(apiId);
   let t1=null,t2=null,hg=null,ag=null,live=false,fin=false,dateStr='';
   if(m){
-    if(m.homeTeam?.id) t1=m.homeTeam;
-    if(m.awayTeam?.id) t2=m.awayTeam;
+    if(m.homeTeam?.id)t1=m.homeTeam;
+    if(m.awayTeam?.id)t2=m.awayTeam;
     const ft=m.score?.fullTime;
-    hg=ft?.home??null; ag=ft?.away??null;
+    hg=ft?.home??null;ag=ft?.away??null;
     live=['IN_PLAY','PAUSED','LIVE'].includes(m.status);
     fin=m.status==='FINISHED';
     dateStr=fmtDate(m.utcDate);
   }
-  const t1w=fin&&hg!==null&&hg>ag, t2w=fin&&ag!==null&&ag>hg;
+  const t1w=fin&&hg!==null&&hg>ag,t2w=fin&&ag!==null&&ag>hg;
 
-  function row(team,slot,score,isWin) {
+  function row(team,slot,score,isWin){
     const name=team?(team.shortName||team.tla||team.name):null;
-    const flag=team?.crest?`<img class="bk-flag" src="${team.crest}" alt="${team.tla||''}" onerror="this.outerHTML='<div class=bk-flag-ph></div>'">` :'<div class="bk-flag-ph"></div>';
-    const nm=name?`<span class="bk-name${isWin?' winner':''}">${name}</span>`:`<span class="bk-name slot">${slot}</span>`;
-    const sc=(fin&&score!==null&&score!==undefined)?`<span class="bk-score">${score}</span>`:'';
-    return `<div class="bk-row${isWin?' win':''}">${flag}${nm}${sc}</div>`;
+    const flag=team?.crest?`<img class="mk-flag" src="${team.crest}" alt="${team.tla||''}" onerror="this.outerHTML='<div class=mk-flag-ph></div>'">` :'<div class="mk-flag-ph"></div>';
+    const nm=name?`<span class="mk-name${isWin?' winner':''}">${name}</span>`:`<span class="mk-name slot">${slot}</span>`;
+    const sc=(fin&&score!==null&&score!==undefined)?`<span class="mk-score">${score}</span>`:'';
+    return`<div class="mk-row${isWin?' win':''}">${flag}${nm}${sc}</div>`;
   }
 
-  return `<div class="bk-card-static${extraCls?' '+extraCls:''}${live?' live':''}">
-    <div class="bk-card-head">
-      <span class="bk-card-id">${label}</span>
-      ${live?'<span class="bk-live-tag">● LIVE</span>':fin?'<span class="bk-ft-tag">FT</span>':`<span class="bk-card-date">${dateStr}</span>`}
+  return`<div class="mk${cls?' '+cls:''}${live?' live':''}">
+    <div class="mk-head">
+      <span class="mk-id">${label}</span>
+      ${live?'<span class="mk-live">● LIVE</span>':fin?'<span class="mk-ft">FT</span>':`<span class="mk-date">${dateStr}</span>`}
     </div>
     ${row(t1,s1,hg,t1w)}
     ${row(t2,s2,ag,t2w)}
   </div>`;
 }
 
-// ─── RENDER TABELLONE ────────────────────────────────────────────────────────
-function renderBracket() {
-  const stage = document.getElementById('bk-stage');
+// ── RENDER TABELLONE ─────────────────────────────────────────────────────────
+function renderBracket(){
+  const grid=document.getElementById('bk-grid');
 
-  // Colonna R32 (4 coppie di 2 card)
-  function colR32(groups, label) {
-    const cards = groups.map((g,gi)=>{
-      const t0 = gi*(2*CH+PG+GG);
-      const t1 = t0+CH+PG;
-      return card(g.r32[0].id, g.r32[0].s1, g.r32[0].s2, g.r32[0].apiId, t0)
-           + card(g.r32[1].id, g.r32[1].s1, g.r32[1].s2, g.r32[1].apiId, t1);
-    }).join('');
-    return `<div class="bk-col" style="width:${CW}px">
-      <div class="bk-col-label">${label}</div>
-      <div class="bk-col-body" style="height:${TOTAL_H}px">${cards}</div>
-    </div>`;
+  // ── Costruisce una colonna come stringa HTML ──
+  // cards = array di { html, topOffset } dove topOffset è il margine-top da aggiungere
+  // Usiamo flex-col con sp() come spacer
+
+  function buildCol(label, items){
+    // items: [{marginTop, card}]
+    let html=`<div class="bk-col-head">${label}</div><div class="bk-col">`;
+    let cursor=0;
+    items.forEach(item=>{
+      const delta=item.top-cursor;
+      if(delta>0){ html+=sp(delta); cursor+=delta; }
+      html+=item.card;
+      cursor+=CH;
+    });
+    html+='</div>';
+    return html;
   }
 
-  // Colonna R16 (4 card, centrate sui gruppi R32)
-  function colR16(groups, label) {
-    const cards = groups.map((g,gi)=>{
-      const cy = pairCY(gi);
-      return card(g.r16id, 'W '+g.r32[0].id, 'W '+g.r32[1].id, g.r16api, cy-CH/2);
-    }).join('');
-    return `<div class="bk-col" style="width:${CW}px">
-      <div class="bk-col-label">${label}</div>
-      <div class="bk-col-body" style="height:${TOTAL_H}px">${cards}</div>
+  // ── R32 Sinistra ──
+  const r32L_items=[];
+  BK.L.forEach((g,gi)=>{
+    const t0=gi*(2*CH+PG+GG);
+    r32L_items.push({top:t0,       card:mkCard(g.r32[0].id,g.r32[0].s1,g.r32[0].s2,g.r32[0].api)});
+    r32L_items.push({top:t0+CH+PG, card:mkCard(g.r32[1].id,g.r32[1].s1,g.r32[1].s2,g.r32[1].api)});
+  });
+
+  // ── R16 Sinistra ──
+  const r16L_items=BK.L.map((g,gi)=>({
+    top: Math.round(pairCY(gi)-CH/2),
+    card:mkCard(g.r16.id,'W '+g.r32[0].id,'W '+g.r32[1].id,g.r16.api)
+  }));
+
+  // ── QF Sinistra ──
+  const qfL_items=BK.qfL.map((qf,qi)=>({
+    top: Math.round(qfCY(qi)-CH/2),
+    card:mkCard(qf.id,'W '+BK.L[qi*2].r16.id,'W '+BK.L[qi*2+1].r16.id,qf.api)
+  }));
+
+  // ── SF Sinistra ──
+  const sf1_items=[{
+    top: Math.round(sfCY-CH/2),
+    card:mkCard(BK.sf1.id,'W '+BK.qfL[0].id,'W '+BK.qfL[1].id,BK.sf1.api)
+  }];
+
+  // ── Colonna Centrale: Finale + 3° posto ──
+  // Finale in cima, 3° posto subito sotto
+  const centerHTML=`
+    <div class="bk-col-head" style="color:#c9a400">🏆 Finale</div>
+    <div class="bk-center-col">
+      <div class="bk-center-label gold">19 luglio 2026</div>
+      ${mkCard(BK.fin.id,'W '+BK.sf1.id,'W '+BK.sf2.id,BK.fin.api,'gold')}
+      <div class="bk-center-sep"></div>
+      <div class="bk-center-label bronze">🥉 3° Posto — 18 luglio</div>
+      ${mkCard(BK.trd.id,'Perdente '+BK.sf1.id,'Perdente '+BK.sf2.id,BK.trd.api,'bronze')}
     </div>`;
-  }
 
-  // Colonna QF (2 card, centrate su coppie di R16)
-  function colQF(qfArr, groups, label) {
-    const cards = qfArr.map((qf,qi)=>{
-      const cy = qfCY(qi);
-      const r16a = groups[qi*2].r16id;
-      const r16b = groups[qi*2+1].r16id;
-      return card(qf.id, 'W '+r16a, 'W '+r16b, qf.api, cy-CH/2);
-    }).join('');
-    return `<div class="bk-col" style="width:${CW}px">
-      <div class="bk-col-label">${label}</div>
-      <div class="bk-col-body" style="height:${TOTAL_H}px">${cards}</div>
-    </div>`;
-  }
+  // ── SF Destra ──
+  const sf2_items=[{
+    top: Math.round(sfCY-CH/2),
+    card:mkCard(BK.sf2.id,'W '+BK.qfR[0].id,'W '+BK.qfR[1].id,BK.sf2.api)
+  }];
 
-  // Colonna SF (1 card centrata)
-  function colSF(sfDef, qfArr, label) {
-    const cy = sfCY;
-    const qa = qfArr[0].id, qb = qfArr[1].id;
-    return `<div class="bk-col" style="width:${CW}px">
-      <div class="bk-col-label">${label}</div>
-      <div class="bk-col-body" style="height:${TOTAL_H}px">
-        ${card(sfDef.id, 'W '+qa, 'W '+qb, sfDef.api, cy-CH/2)}
-      </div>
-    </div>`;
-  }
+  // ── QF Destra ──
+  const qfR_items=BK.qfR.map((qf,qi)=>({
+    top: Math.round(qfCY(qi)-CH/2),
+    card:mkCard(qf.id,'W '+BK.R[qi*2].r16.id,'W '+BK.R[qi*2+1].r16.id,qf.api)
+  }));
 
-  stage.innerHTML = `
-    ${colR32(BRACKET.left,  'Round of 32')}
-    ${colR16(BRACKET.left,  'Round of 16')}
-    ${colQF(BRACKET.qfL, BRACKET.left,  'Quarti')}
-    ${colSF(BRACKET.sf1, BRACKET.qfL, 'Semifinale')}
-    ${colSF(BRACKET.sf2, BRACKET.qfR, 'Semifinale')}
-    ${colQF(BRACKET.qfR, BRACKET.right, 'Quarti')}
-    ${colR16(BRACKET.right, 'Round of 16')}
-    ${colR32(BRACKET.right, 'Round of 32')}
-  `;
+  // ── R16 Destra ──
+  const r16R_items=BK.R.map((g,gi)=>({
+    top: Math.round(pairCY(gi)-CH/2),
+    card:mkCard(g.r16.id,'W '+g.r32[0].id,'W '+g.r32[1].id,g.r16.api)
+  }));
 
-  // Sezione finale sotto
-  const wrap = document.getElementById('bk-finals-wrap');
-  const row  = document.getElementById('bk-finals-row');
-  wrap.style.display = '';
-  row.innerHTML = `
-    <div class="bk-finals-block">
-      <div class="bk-finals-block-label gold">🏆 Finale — 19 luglio</div>
-      ${cardStatic(BRACKET.fin.id, 'W '+BRACKET.sf1.id, 'W '+BRACKET.sf2.id, BRACKET.fin.api, 'gold')}
-    </div>
-    <div style="width:1px;background:#eef2fb;align-self:stretch;margin:0 8px"></div>
-    <div class="bk-finals-block">
-      <div class="bk-finals-block-label bronze">🥉 3° Posto — 18 luglio</div>
-      ${cardStatic(BRACKET.trd.id, 'Perdente '+BRACKET.sf1.id, 'Perdente '+BRACKET.sf2.id, BRACKET.trd.api, 'bronze')}
-    </div>
+  // ── R32 Destra ──
+  const r32R_items=[];
+  BK.R.forEach((g,gi)=>{
+    const t0=gi*(2*CH+PG+GG);
+    r32R_items.push({top:t0,       card:mkCard(g.r32[0].id,g.r32[0].s1,g.r32[0].s2,g.r32[0].api)});
+    r32R_items.push({top:t0+CH+PG, card:mkCard(g.r32[1].id,g.r32[1].s1,g.r32[1].s2,g.r32[1].api)});
+  });
+
+  grid.innerHTML=`
+    ${buildCol('Round of 32', r32L_items)}
+    ${buildCol('Round of 16', r16L_items)}
+    ${buildCol('Quarti',       qfL_items)}
+    ${buildCol('Semifinale',   sf1_items)}
+    <div>${centerHTML}</div>
+    ${buildCol('Semifinale',   sf2_items)}
+    ${buildCol('Quarti',       qfR_items)}
+    ${buildCol('Round of 16', r16R_items)}
+    ${buildCol('Round of 32', r32R_items)}
   `;
 }
 
-// ─── POLL ─────────────────────────────────────────────────────────────────────
-function updateTimestamp() {
-  document.getElementById('last-update').textContent =
+// ── POLL ─────────────────────────────────────────────────────────────────────
+function updateTimestamp(){
+  document.getElementById('last-update').textContent=
     'Agg. '+new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 }
-function hasLive() { return allMatches.some(m=>['IN_PLAY','PAUSED','LIVE'].includes(m.status)); }
+function hasLive(){ return allMatches.some(m=>['IN_PLAY','PAUSED','LIVE'].includes(m.status)); }
 
-async function refresh() {
-  try {
-    const data = await getMatches();
+async function refresh(){
+  try{
+    const data=await getMatches();
     if(data?.matches){
-      allMatches = data.matches;
-      const gs = buildGroupStandings(data.matches);
+      allMatches=data.matches;
+      const gs=buildGS(data.matches);
       renderGroups(gs);
       renderBestThirds(gs);
       renderBracket();
     }
     updateTimestamp();
-  } catch(e) {
+  }catch(e){
     console.error('Errore:',e);
     document.getElementById('last-update').textContent='⚠️ Errore connessione';
   }
   clearTimeout(pollTimer);
-  pollTimer = setTimeout(refresh, hasLive()?60000:180000);
+  pollTimer=setTimeout(refresh,hasLive()?60000:180000);
 }
 
 refresh();
