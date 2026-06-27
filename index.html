@@ -8,7 +8,6 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #f0f4fa; color: #1a2744; font-family: 'Segoe UI', Arial, sans-serif; min-height: 100vh; }
 
-    /* HEADER */
     header { background: linear-gradient(135deg, #0a1f5c 0%, #1a5fa8 60%, #4db8e8 100%); padding: 18px 28px; display: flex; justify-content: space-between; align-items: center; }
     .header-left h1 { font-size: 22px; font-weight: 800; color: #fff; letter-spacing: 1px; }
     .header-left p { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 3px; }
@@ -17,18 +16,15 @@
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
     .ad-banner { background: #eef2fb; border-bottom: 1px solid #dde6f5; padding: 10px; text-align: center; font-size: 11px; color: #aab8d4; }
 
-    /* TABS */
     .tabs { display: flex; background: #fff; border-bottom: 2px solid #dde6f5; box-shadow: 0 2px 8px rgba(10,31,92,0.06); }
     .tab-btn { padding: 14px 22px; cursor: pointer; font-size: 13px; font-weight: 700; color: #7a90b8; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; user-select: none; }
     .tab-btn:hover { color: #1a5fa8; }
     .tab-btn.active { color: #0a1f5c; border-bottom-color: #1a5fa8; }
 
-    /* LEGEND */
     .legend { display: flex; gap: 20px; padding: 10px 20px; font-size: 11px; color: #7a90b8; border-bottom: 1px solid #dde6f5; background: #fff; flex-wrap: wrap; }
     .legend-item { display: flex; align-items: center; gap: 6px; }
     .legend-bar { width: 4px; height: 16px; border-radius: 2px; }
 
-    /* GIRONI */
     .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; padding: 20px; }
     .group-card { background: #fff; border: 1px solid #dde6f5; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(10,31,92,0.07); }
     .group-header { background: linear-gradient(90deg, #0a1f5c 0%, #1a5fa8 100%); padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
@@ -49,7 +45,6 @@
     .team-short { font-size: 12px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90px; color: #1a2744; }
     .pts-cell { font-weight: 900; color: #0a1f5c; }
 
-    /* MIGLIORI TERZE */
     .thirds-page { padding: 20px; }
     .thirds-info { margin-bottom: 16px; font-size: 13px; color: #7a90b8; }
     .thirds-table-wrap { background: #fff; border: 1px solid #dde6f5; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(10,31,92,0.07); }
@@ -69,43 +64,136 @@
     .status-elim { color: #dc2626; font-size: 11px; }
     .qualifying-separator td { background: #fef9c3; font-size: 11px; color: #92400e; font-weight: 700; text-align: center; padding: 6px; border-top: 2px dashed #fbbf24; }
 
-    /* ══════════════════════════════
-       TABELLONE DARK
-       ══════════════════════════════ */
+    /* ═══════════════════════════════
+       TABELLONE LIGHT — NUOVO
+       ═══════════════════════════════ */
     #tab-tabellone {
-      background: #0d1520;
+      background: #f0f4fa;
       min-height: calc(100vh - 130px);
       padding: 20px 0 40px;
     }
 
-    .bracket-top-label {
+    .bk-page-title {
       text-align: center;
-      padding: 0 0 16px;
+      padding: 0 0 18px;
     }
-    .bracket-top-label span {
+    .bk-page-title span {
       display: inline-block;
-      background: #1a2535;
-      border: 1px solid #2a3a50;
+      background: #fff;
+      border: 1px solid #dde6f5;
       border-radius: 20px;
       padding: 5px 18px;
       font-size: 10px;
       font-weight: 800;
-      color: rgba(255,255,255,0.25);
+      color: #7a90b8;
       letter-spacing: 3px;
       text-transform: uppercase;
     }
 
-    .bracket-scroll { overflow-x: auto; padding: 0 16px; }
+    /* Scroll wrapper */
+    .bk-scroll { overflow-x: auto; padding: 0 12px 20px; }
 
-    .bracket-canvas-wrap {
-      position: relative;
+    /* Main flex row: left | center | right */
+    .bk-main {
       display: flex;
       align-items: center;
+      gap: 0;
+      min-width: 1020px;
       justify-content: center;
-      min-width: 960px;
+      position: relative;
     }
 
-    .bracket-canvas-wrap svg.bk-lines {
+    /* Each half */
+    .bk-half {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Round column */
+    .bk-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 0 4px;
+    }
+
+    .bk-col-label {
+      text-align: center;
+      font-size: 9px;
+      font-weight: 800;
+      color: #aab8d4;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding-bottom: 8px;
+    }
+
+    /* Match card */
+    .bk-card {
+      background: #fff;
+      border: 1px solid #dde6f5;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 138px;
+      margin: 6px 0;
+      box-shadow: 0 1px 4px rgba(10,31,92,0.06);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .bk-card:hover { border-color: #1a5fa8; box-shadow: 0 2px 8px rgba(10,31,92,0.13); }
+    .bk-card.live { border-color: #16a34a; box-shadow: 0 0 8px rgba(22,163,74,0.2); }
+    .bk-card.final-card { width: 150px; border-color: #c9a400; background: #fffdf0; }
+    .bk-card.third-card { width: 150px; }
+
+    .bk-card-head {
+      background: #f5f8ff;
+      border-bottom: 1px solid #eef2fb;
+      padding: 3px 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bk-card-id { font-size: 8px; font-weight: 800; color: #aab8d4; letter-spacing: 1px; }
+    .bk-card-date { font-size: 8px; color: #c0cce0; }
+    .bk-live-tag { color: #16a34a; font-size: 8px; font-weight: 800; animation: blink 1s infinite; }
+    .bk-ft-tag { color: #aab8d4; font-size: 8px; }
+
+    .bk-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 7px;
+      border-top: 1px solid #eef2fb;
+    }
+    .bk-row:first-of-type { border-top: none; }
+    .bk-row.win { background: #f0fdf4; }
+
+    .bk-flag { width: 20px; height: 13px; object-fit: cover; border-radius: 2px; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.12); }
+    .bk-flag-ph { width: 20px; height: 13px; background: #e8edf5; border-radius: 2px; flex-shrink: 0; }
+
+    .bk-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a2744;
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .bk-name.slot { color: #b0bdd4; font-weight: 600; font-size: 10px; font-style: italic; }
+    .bk-name.winner { color: #0a1f5c; }
+
+    .bk-score {
+      font-size: 12px;
+      font-weight: 900;
+      color: #1a5fa8;
+      min-width: 13px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .final-card .bk-score { color: #c9a400; }
+
+    /* Connectors via SVG */
+    .bk-main svg.lines {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -113,118 +201,48 @@
       overflow: visible;
     }
 
-    /* Bracket sides */
-    .bk-side {
-      display: flex;
-      align-items: center;
-    }
-
-    /* Round column */
-    .bk-round {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    /* Round header label */
-    .bk-round-label {
-      text-align: center;
-      font-size: 8px;
-      font-weight: 800;
-      color: rgba(255,255,255,0.18);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      padding-bottom: 10px;
-      margin: 0 4px;
-    }
-
-    /* Group of two R32 matches */
-    .bk-pair {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin: 12px 4px;
-    }
-
-    /* Single match for R16+ */
-    .bk-single {
-      display: flex;
-      flex-direction: column;
-      margin: 4px;
-    }
-
-    /* Match card */
-    .bk-card {
-      width: 152px;
-      background: #1a2535;
-      border: 1px solid #253545;
-      border-radius: 8px;
-      overflow: hidden;
-      transition: border-color 0.2s;
-    }
-    .bk-card:hover { border-color: #4db8e8; }
-    .bk-card.bk-live { border-color: #22c55e; box-shadow: 0 0 10px rgba(34,197,94,0.25); }
-    .bk-card.bk-final { width: 170px; border-color: #b8860b; background: #1a1f0a; }
-
-    .bk-card-header {
-      background: #0d1520;
-      padding: 3px 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .bk-card-id { font-size: 8px; color: rgba(255,255,255,0.2); font-weight: 700; letter-spacing: 1px; }
-    .bk-card-date { font-size: 8px; color: rgba(255,255,255,0.2); }
-    .bk-live-tag { color: #22c55e; font-size: 8px; font-weight: 800; animation: blink 1s infinite; }
-    .bk-finished-tag { color: rgba(255,255,255,0.25); font-size: 8px; }
-
-    .bk-team-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 8px;
-      border-top: 1px solid #0d1520;
-      position: relative;
-    }
-    .bk-team-row:first-of-type { border-top: none; }
-    .bk-team-row.bk-win { background: #0a1a0a; }
-
-    .bk-flag { width: 22px; height: 14px; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
-    .bk-flag-ph { width: 22px; height: 14px; background: #253545; border-radius: 2px; flex-shrink: 0; }
-
-    .bk-team-name { font-size: 11px; font-weight: 700; color: #c8d8e8; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .bk-team-name.bk-code { color: #3a5570; font-size: 9px; font-weight: 600; font-style: italic; }
-    .bk-team-name.bk-winner-name { color: #ffffff; }
-
-    .bk-score { font-size: 13px; font-weight: 900; color: #4db8e8; min-width: 14px; text-align: right; flex-shrink: 0; }
-    .bk-card.bk-final .bk-score { color: #c9a400; }
-
-    /* Center final section */
+    /* Center column */
     .bk-center {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 12px;
-      gap: 10px;
+      gap: 8px;
+      padding: 0 14px;
+      flex-shrink: 0;
     }
-    .bk-trophy { font-size: 32px; text-align: center; }
-    .bk-final-label { font-size: 9px; font-weight: 800; color: #c9a400; letter-spacing: 3px; text-transform: uppercase; text-align: center; }
-    .bk-3rd-label { font-size: 8px; color: rgba(255,255,255,0.2); letter-spacing: 2px; text-transform: uppercase; text-align: center; margin-top: 14px; }
+    .bk-trophy { font-size: 28px; }
+    .bk-final-label {
+      font-size: 9px;
+      font-weight: 800;
+      color: #c9a400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .bk-third-label {
+      font-size: 8px;
+      color: #aab8d4;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+    .bk-sf-label {
+      font-size: 9px;
+      font-weight: 800;
+      color: #aab8d4;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-    /* Note at bottom */
-    .bracket-note {
+    .bk-note {
       text-align: center;
-      color: rgba(255,255,255,0.15);
+      color: #aab8d4;
       font-size: 10px;
-      padding: 20px;
+      padding: 18px 20px 0;
       font-style: italic;
     }
 
-    /* Generic */
     .state-msg { padding: 60px 20px; text-align: center; color: #aab8d4; font-size: 14px; line-height: 2; }
-    .state-msg-dark { color: rgba(255,255,255,0.2); }
     .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid #dde6f5; border-top-color: #1a5fa8; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px; }
-    .spinner-dark { border-color: #253545; border-top-color: #4db8e8; }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
@@ -260,68 +278,121 @@
   </div>
 </div>
 
-<!-- TABELLONE DARK -->
+<!-- TABELLONE LIGHT -->
 <div id="tab-tabellone" style="display:none">
-  <div class="bracket-top-label"><span>Mondiale 2026 – Proiezione Tabellone</span></div>
-  <div class="bracket-scroll">
-    <div class="bracket-canvas-wrap" id="bracket-canvas">
-      <svg class="bk-lines" id="bk-svg"></svg>
-      <div class="state-msg state-msg-dark"><div class="spinner spinner-dark"></div><br>Caricamento tabellone...</div>
+  <div class="bk-page-title"><span>Mondiale 2026 – Tabellone</span></div>
+  <div class="bk-scroll">
+    <div class="bk-main" id="bk-main">
+      <svg class="lines" id="bk-svg"></svg>
+      <div class="state-msg"><div class="spinner"></div><br>Caricamento tabellone...</div>
     </div>
   </div>
-  <div class="bracket-note">⚡ Proiezione basata sulle classifiche attuali. Le squadre in corsivo indicano la posizione nel girone (es. 1A = 1° Girone A).</div>
+  <div class="bk-note">⚡ Proiezione basata sulle classifiche attuali. Gli slot in corsivo indicano la posizione nel girone (es. 1A = 1° del Girone A).</div>
 </div>
 
 <script>
-// ══════════════════════════════════════════════════
-//  STRUTTURA BRACKET 2026
-// ══════════════════════════════════════════════════
-const BK_LEFT = [
-  { pairs: [{id:'M74',s1:'1A',s2:'3ABCDF'},{id:'M77',s1:'1I',s2:'3CDFGH'}], r16:'M89', date:'04/07' },
-  { pairs: [{id:'M73',s1:'2C',s2:'1D'},{id:'M75',s1:'1F',s2:'2B'}],         r16:'M90', date:'04/07' },
-  { pairs: [{id:'M83',s1:'2K',s2:'2L'},{id:'M84',s1:'1H',s2:'2J'}],         r16:'M93', date:'06/07' },
-  { pairs: [{id:'M81',s1:'1B',s2:'3BEFIJ'},{id:'M82',s1:'1G',s2:'3AEHIJ'}], r16:'M94', date:'07/07' },
-];
-const BK_RIGHT = [
-  { pairs: [{id:'M76',s1:'1C',s2:'2F'},{id:'M78',s1:'2E',s2:'2I'}],          r16:'M91', date:'05/07' },
-  { pairs: [{id:'M79',s1:'1E',s2:'3CEFHI'},{id:'M80',s1:'1L',s2:'3EHIJK'}],  r16:'M92', date:'06/07' },
-  { pairs: [{id:'M86',s1:'1J',s2:'2H'},{id:'M88',s1:'2D',s2:'2G'}],          r16:'M95', date:'07/07' },
-  { pairs: [{id:'M85',s1:'1K',s2:'3EFGIJ'},{id:'M87',s1:'2A',s2:'3DEIJL'}],  r16:'M96', date:'07/07' },
-];
-// QF pairings: M89+M90→M97, M93+M94→M98, M91+M92→M99, M95+M96→M100
-// SF: M97+M98→M101, M99+M100→M102
-// Final: M101+M102→M104, 3rd: M103
+// ─── STRUTTURA SLOT DEL TABELLONE (da foto ufficiale) ────────────────────────
+// LATO SINISTRO (Left bracket)
+// R32: M74(GER vs 3ABCDF), M77(E vs 3CDFGH), M73(RSA vs CAN), M75(1F vs MAR)
+//      M83(2K vs 2L), M84(1H vs 2J), M81(USA vs 3BEFIJ), M82(1G vs 3AEHIJ) [wait - da foto]
+// Rileggo dalla foto 2 esattamente:
 
-// ══════════════════════════════════════════════════
-//  STATE
-// ══════════════════════════════════════════════════
+// Lato SINISTRA (colonna sinistra):
+// M74: GER / 3ABCDF
+// M77: E   / 3CDFGH
+// M73: RSA / CAN
+// M75: 1F  / MAR
+// M83: 2K  / 2L
+// M84: 1H  / 2J  [nella foto: 1H / 2J]
+// M81: USA / 3BEFIJ
+// M82: 1G  / 3AEHIJ
+
+// Lato DESTRA:
+// M76: BRA / 2F
+// M78: 2E  / 2I
+// M79: MEX / 3CEFHI
+// M80: 1L  / 3EHIJK
+// M86: ARG / 2H
+// M88: 2D  / 2G
+// M85: SUI / 3EFGLIJ  [controllare]
+// M87: 2A  / 3DEIJL
+
+// R16 sinistra: M89(W74/W77), M90(W73/W75), M93(W83/W84), M94(W81/W82)
+// R16 destra:   M91(W76/W78), M92(W79/W80), M95(W86/W88), M96(W85/W87)
+// QF sinistra:  M97(W89/W90), M98(W93/W94)
+// QF destra:    M99(W91/W92), M100(W95/W96)
+// SF: M101(W97/W98), M102(W99/W100)
+// Finale: M104(W101/W102)
+// 3° posto: M103(Perdente SF1/SF2)
+
+const SLOTS = {
+  // Round of 32 - SINISTRA (dall'alto)
+  M74:  { s1:'GER',      s2:'3ABCDF',  date:'28/06 22:30' },
+  M77:  { s1:'E',        s2:'3CDFGH',  date:'30/06 03:00' },
+  M73:  { s1:'RSA',      s2:'CAN',     date:'28/06 21:00' },
+  M75:  { s1:'1F',       s2:'MAR',     date:'30/06 03:00' },
+  M83:  { s1:'2K',       s2:'2L',      date:'03/07 01:00' },
+  M84:  { s1:'1H',       s2:'2J',      date:'02/07 21:00' },  // 1H/2J dalla foto
+  M81:  { s1:'USA',      s2:'3BEFIJ',  date:'02/07 02:00' },
+  M82:  { s1:'1G',       s2:'3AEHIJ',  date:'01/07 22:00' },
+
+  // Round of 32 - DESTRA (dall'alto)
+  M76:  { s1:'BRA',      s2:'2F',      date:'29/06 18:00' },
+  M78:  { s1:'2E',       s2:'2I',      date:'30/06 18:00' },
+  M79:  { s1:'MEX',      s2:'3CEFHI',  date:'01/07 03:00' },
+  M80:  { s1:'1L',       s2:'3EHIJK',  date:'01/07 18:00' },
+  M86:  { s1:'ARG',      s2:'2H',      date:'04/07 00:00' },
+  M88:  { s1:'2D',       s2:'2G',      date:'03/07 18:00' },
+  M85:  { s1:'SUI',      s2:'3EFGLIJ', date:'04/07 05:00' },
+  M87:  { s1:'2A',       s2:'3DEIJL',  date:'04/07 03:30' },
+
+  // Round of 16
+  M89:  { s1:'W74',  s2:'W77',  date:'05/07 22:00' },
+  M90:  { s1:'W73',  s2:'W75',  date:'05/07 22:00' },
+  M93:  { s1:'W83',  s2:'W84',  date:'06/07 21:00' },
+  M94:  { s1:'W81',  s2:'W82',  date:'07/07 21:00' },
+  M91:  { s1:'W76',  s2:'W78',  date:'05/07 22:00' },
+  M92:  { s1:'W79',  s2:'W80',  date:'06/07 22:00' },
+  M95:  { s1:'W86',  s2:'W88',  date:'07/07 22:00' },
+  M96:  { s1:'W85',  s2:'W87',  date:'07/07 03:30' },
+
+  // Quarti
+  M97:  { s1:'W89',  s2:'W90',  date:'09/07 22:00' },
+  M98:  { s1:'W93',  s2:'W94',  date:'10/07 22:00' },
+  M99:  { s1:'W91',  s2:'W92',  date:'09/07 22:00' },
+  M100: { s1:'W95',  s2:'W96',  date:'10/07 22:00' },
+
+  // Semifinali
+  M101: { s1:'W97',  s2:'W98',  date:'14/07 21:00' },
+  M102: { s1:'W99',  s2:'W100', date:'15/07 21:00' },
+
+  // Finale e 3° posto
+  M104: { s1:'W101', s2:'W102', date:'19/07 21:00' },
+  M103: { s1:'Perdente SF1', s2:'Perdente SF2', date:'18/07 21:00' },
+};
+
+// ─── STATO ───────────────────────────────────────────────────────────────────
 const API = '/.netlify/functions/api';
 let allMatches = [], pollTimer = null;
 
-// ══════════════════════════════════════════════════
-//  TABS
-// ══════════════════════════════════════════════════
+// ─── TABS ────────────────────────────────────────────────────────────────────
 function switchTab(tab, el) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   ['gironi','terze','tabellone'].forEach(t => {
     document.getElementById('tab-'+t).style.display = t===tab ? '' : 'none';
   });
-  if (tab === 'tabellone') setTimeout(drawLines, 100);
+  if (tab === 'tabellone') setTimeout(drawLines, 80);
 }
 
-// ══════════════════════════════════════════════════
-//  API
-// ══════════════════════════════════════════════════
+// ─── API ─────────────────────────────────────────────────────────────────────
 async function getMatches() {
   const r = await fetch(`${API}?type=matches`);
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return r.json();
 }
 
-// ══════════════════════════════════════════════════
-//  CALCOLA GIRONI
-// ══════════════════════════════════════════════════
+// ─── GIRONI ──────────────────────────────────────────────────────────────────
 function buildGroupStandings(matches) {
   const groups = {};
   matches.filter(m => m.stage==='GROUP_STAGE').forEach(m => {
@@ -355,15 +426,10 @@ function buildGroupStandings(matches) {
   return result;
 }
 
-// ══════════════════════════════════════════════════
-//  RISOLVI SLOT (1A → squadra corrente)
-// ══════════════════════════════════════════════════
 function resolveSlot(code, gs) {
   if (!gs) return null;
   if (code.startsWith('3')) {
-    // Terza: prendi la miglior terza dai gironi specificati
     const letters = code.substring(1).split('');
-    // Calcola classifica di tutte le terze
     const allThirds = [];
     Object.entries(gs).forEach(([gn, table]) => {
       if (table.length >= 3) allThirds.push({...table[2], groupLetter: gn.replace('GROUP_','')});
@@ -378,7 +444,7 @@ function resolveSlot(code, gs) {
     const match = top8.find(t => letters.includes(t.groupLetter));
     return match ? match.team : null;
   }
-  // Es: "1A", "2B"
+  if (code.startsWith('W') || code.startsWith('Perdente')) return null;
   const pos = parseInt(code[0]) - 1;
   const letter = code[1];
   const group = gs[`GROUP_${letter}`];
@@ -386,9 +452,7 @@ function resolveSlot(code, gs) {
   return group[pos].team;
 }
 
-// ══════════════════════════════════════════════════
-//  RENDER GIRONI
-// ══════════════════════════════════════════════════
+// ─── RENDER GIRONI ───────────────────────────────────────────────────────────
 function renderGroups(gs) {
   const grid = document.getElementById('groups-grid');
   const entries = Object.entries(gs);
@@ -416,9 +480,7 @@ function renderGroups(gs) {
   }).join('');
 }
 
-// ══════════════════════════════════════════════════
-//  RENDER TERZE
-// ══════════════════════════════════════════════════
+// ─── RENDER TERZE ────────────────────────────────────────────────────────────
 function renderBestThirds(gs) {
   const thirds = [];
   Object.entries(gs).forEach(([gn,table])=>{
@@ -449,19 +511,22 @@ function renderBestThirds(gs) {
     }).join('')}</tbody></table>`;
 }
 
-// ══════════════════════════════════════════════════
-//  RENDER CARD SINGOLA
-// ══════════════════════════════════════════════════
-function makeCard(id, s1code, s2code, gs, apiMatches, isFinal) {
-  const t1 = resolveSlot(s1code, gs);
-  const t2 = resolveSlot(s2code, gs);
+// ─── COSTRUZIONE CARD ────────────────────────────────────────────────────────
+function makeCard(matchId, gs, apiMatches, extraClass) {
+  const slot = SLOTS[matchId];
+  if (!slot) return '';
 
-  // Cerca dati dal vivo nell'API (per knockout già iniziati)
-  let hg=null, ag=null, live=false, fin=false, dateStr='';
+  const t1 = resolveSlot(slot.s1, gs);
+  const t2 = resolveSlot(slot.s2, gs);
+
+  // Cerca nel live
+  let hg=null, ag=null, live=false, fin=false;
   const apiM = apiMatches.find(m => {
     if(m.stage==='GROUP_STAGE') return false;
-    if(t1&&m.homeTeam?.id===t1.id && t2&&m.awayTeam?.id===t2.id) return true;
-    if(t1&&m.awayTeam?.id===t1.id && t2&&m.homeTeam?.id===t2.id) return true;
+    if(t1&&t2) {
+      if(m.homeTeam?.id===t1.id && m.awayTeam?.id===t2.id) return true;
+      if(m.homeTeam?.id===t2.id && m.awayTeam?.id===t1.id) return true;
+    }
     return false;
   });
   if (apiM) {
@@ -469,187 +534,174 @@ function makeCard(id, s1code, s2code, gs, apiMatches, isFinal) {
     ag = apiM.score?.fullTime?.away;
     live = apiM.status==='IN_PLAY'||apiM.status==='PAUSED';
     fin  = apiM.status==='FINISHED';
-    if (apiM.utcDate) {
-      const d = new Date(apiM.utcDate);
-      dateStr = d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
-    }
   }
 
   const t1wins = fin && hg!==null && hg > ag;
   const t2wins = fin && ag!==null && ag > hg;
 
-  function teamRow(team, code, score, isWin) {
-    const nameStr = team ? (team.shortName||team.tla||team.name) : null;
-    const flagEl = team?.crest
-      ? `<img class="bk-flag" src="${team.crest}" alt="${team.tla}" onerror="this.outerHTML='<div class=bk-flag-ph></div>'">`
+  function row(team, slotCode, score, isWin) {
+    const name = team ? (team.shortName||team.tla||team.name) : null;
+    const flag = team?.crest
+      ? `<img class="bk-flag" src="${team.crest}" alt="${team.tla||''}" onerror="this.outerHTML='<div class=bk-flag-ph></div>'">`
       : '<div class="bk-flag-ph"></div>';
-    const nameEl = nameStr
-      ? `<span class="bk-team-name${isWin?' bk-winner-name':''}">${nameStr}</span>`
-      : `<span class="bk-team-name bk-code">${code}</span>`;
-    const scoreEl = score!==null&&score!==undefined ? `<span class="bk-score">${score}</span>` : '';
-    return `<div class="bk-team-row${isWin?' bk-win':''}">${flagEl}${nameEl}${scoreEl}</div>`;
+    const nameEl = name
+      ? `<span class="bk-name${isWin?' winner':''}">${name}</span>`
+      : `<span class="bk-name slot">${slotCode}</span>`;
+    const scoreEl = (score!==null&&score!==undefined) ? `<span class="bk-score">${score}</span>` : '';
+    return `<div class="bk-row${isWin?' win':''}">${flag}${nameEl}${scoreEl}</div>`;
   }
 
-  const cardClass = `bk-card${isFinal?' bk-final':''}${live?' bk-live':''}`;
-  return `<div class="${cardClass}" id="${id}">
-    <div class="bk-card-header">
-      <span class="bk-card-id">${id}</span>
-      ${live?'<span class="bk-live-tag">🔴LIVE</span>':fin?'<span class="bk-finished-tag">FT</span>':`<span class="bk-card-date">${dateStr}</span>`}
+  const cls = `bk-card${extraClass?' '+extraClass:''}${live?' live':''}`;
+  return `<div class="${cls}" id="${matchId}">
+    <div class="bk-card-head">
+      <span class="bk-card-id">${matchId}</span>
+      ${live?'<span class="bk-live-tag">● LIVE</span>':fin?'<span class="bk-ft-tag">FT</span>':`<span class="bk-card-date">${slot.date}</span>`}
     </div>
-    ${teamRow(t1, s1code, hg, t1wins)}
-    ${teamRow(t2, s2code, ag, t2wins)}
+    ${row(t1, slot.s1, hg, t1wins)}
+    ${row(t2, slot.s2, ag, t2wins)}
   </div>`;
 }
 
-// Card con nessuno slot (solo "W74 vs W77")
-function makeCardWinner(id, w1, w2, isFinal) {
-  function wrow(w) {
-    return `<div class="bk-team-row"><div class="bk-flag-ph"></div><span class="bk-team-name bk-code">${w}</span></div>`;
-  }
-  const cls = `bk-card${isFinal?' bk-final':''}`;
-  return `<div class="${cls}" id="${id}">
-    <div class="bk-card-header"><span class="bk-card-id">${id}</span><span class="bk-card-date"></span></div>
-    ${wrow(w1)}${wrow(w2)}
+// ─── RENDER TABELLONE ────────────────────────────────────────────────────────
+function renderBracket(gs, apiMatches) {
+  const main = document.getElementById('bk-main');
+
+  // Colonna R32 sinistra (4 coppie, 8 partite)
+  const r32L = `<div class="bk-col" id="col-r32l">
+    <div class="bk-col-label">Round of 32</div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div>${makeCard('M74',gs,apiMatches)}${makeCard('M77',gs,apiMatches)}</div>
+      <div>${makeCard('M73',gs,apiMatches)}${makeCard('M75',gs,apiMatches)}</div>
+      <div>${makeCard('M83',gs,apiMatches)}${makeCard('M84',gs,apiMatches)}</div>
+      <div>${makeCard('M81',gs,apiMatches)}${makeCard('M82',gs,apiMatches)}</div>
+    </div>
   </div>`;
-}
 
-// ══════════════════════════════════════════════════
-//  RENDER TABELLONE VISUALE
-// ══════════════════════════════════════════════════
-function renderBracketVisual(gs, apiMatches) {
-  const canvas = document.getElementById('bracket-canvas');
+  // R16 sinistra
+  const r16L = `<div class="bk-col" id="col-r16l">
+    <div class="bk-col-label">Round of 16</div>
+    <div style="display:flex;flex-direction:column;gap:48px;padding-top:26px">
+      ${makeCard('M89',gs,apiMatches)}
+      ${makeCard('M90',gs,apiMatches)}
+      ${makeCard('M93',gs,apiMatches)}
+      ${makeCard('M94',gs,apiMatches)}
+    </div>
+  </div>`;
 
-  function buildSide(groups) {
-    const r32col = `<div class="bk-round">
-      <div class="bk-round-label">Round of 32</div>
-      ${groups.map(g =>
-        `<div class="bk-pair">
-          ${makeCard(g.pairs[0].id, g.pairs[0].s1, g.pairs[0].s2, gs, apiMatches, false)}
-          ${makeCard(g.pairs[1].id, g.pairs[1].s1, g.pairs[1].s2, gs, apiMatches, false)}
-        </div>`
-      ).join('')}
-    </div>`;
+  // QF sinistra
+  const qfL = `<div class="bk-col" id="col-qfl">
+    <div class="bk-col-label">Quarti</div>
+    <div style="display:flex;flex-direction:column;gap:110px;padding-top:62px">
+      ${makeCard('M97',gs,apiMatches)}
+      ${makeCard('M98',gs,apiMatches)}
+    </div>
+  </div>`;
 
-    const r16col = `<div class="bk-round">
-      <div class="bk-round-label">Round of 16</div>
-      ${groups.map((g,i) => {
-        const w1=g.pairs[0].id, w2=g.pairs[1].id;
-        return `<div class="bk-single">${makeCardWinner(g.r16,'W'+w1.substring(1),'W'+w2.substring(1),false)}</div>`;
-      }).join('')}
-    </div>`;
-
-    const qfPairs = [[groups[0].r16, groups[1].r16],[groups[2].r16, groups[3].r16]];
-    const qfIds = ['M97_L','M98_L'];
-    const qfcol = `<div class="bk-round">
-      <div class="bk-round-label">Quarti</div>
-      ${qfPairs.map((p,i) =>
-        `<div class="bk-single">${makeCardWinner(qfIds[i],'W'+p[0].substring(1),'W'+p[1].substring(1),false)}</div>`
-      ).join('')}
-    </div>`;
-
-    return `<div class="bk-side">${r32col}${r16col}${qfcol}</div>`;
-  }
-
-  const leftHTML  = buildSide(BK_LEFT);
-  const rightHTML = buildSide(BK_RIGHT);
-
-  const sfLeftId  = 'SF_L';
-  const sfRightId = 'SF_R';
-  const finalId   = 'M104';
-  const third     = 'M103';
-
-  const centerHTML = `<div class="bk-center">
-    <div class="bk-round-label" style="margin-bottom:0">Semifinali</div>
-    ${makeCardWinner(sfLeftId,'W M97','W M98',false)}
+  // Centro
+  const center = `<div class="bk-center" id="col-center">
+    <div class="bk-sf-label">Semifinali</div>
+    ${makeCard('M101',gs,apiMatches)}
     <div class="bk-trophy">🏆</div>
     <div class="bk-final-label">Finale</div>
-    ${makeCardWinner(finalId,'W SF1','W SF2',true)}
-    <div class="bk-3rd-label">3° Posto</div>
-    ${makeCardWinner(third,'Perdente SF1','Perdente SF2',false)}
-    <div class="bk-round-label" style="margin-top:8px">Semifinali</div>
-    ${makeCardWinner(sfRightId,'W M99','W M100',false)}
+    ${makeCard('M104',gs,apiMatches,'final-card')}
+    <div class="bk-third-label">3° Posto</div>
+    ${makeCard('M103',gs,apiMatches,'third-card')}
+    <div class="bk-sf-label" style="margin-top:10px">Semifinali</div>
+    ${makeCard('M102',gs,apiMatches)}
   </div>`;
 
-  canvas.innerHTML = `
-    <svg class="bk-lines" id="bk-svg"></svg>
-    <div style="display:flex;align-items:center;gap:0">
-      ${leftHTML}
-      ${centerHTML}
-      ${rightHTML}
+  // QF destra
+  const qfR = `<div class="bk-col" id="col-qfr">
+    <div class="bk-col-label">Quarti</div>
+    <div style="display:flex;flex-direction:column;gap:110px;padding-top:62px">
+      ${makeCard('M99',gs,apiMatches)}
+      ${makeCard('M100',gs,apiMatches)}
+    </div>
+  </div>`;
+
+  // R16 destra
+  const r16R = `<div class="bk-col" id="col-r16r">
+    <div class="bk-col-label">Round of 16</div>
+    <div style="display:flex;flex-direction:column;gap:48px;padding-top:26px">
+      ${makeCard('M91',gs,apiMatches)}
+      ${makeCard('M92',gs,apiMatches)}
+      ${makeCard('M95',gs,apiMatches)}
+      ${makeCard('M96',gs,apiMatches)}
+    </div>
+  </div>`;
+
+  // R32 destra
+  const r32R = `<div class="bk-col" id="col-r32r">
+    <div class="bk-col-label">Round of 32</div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div>${makeCard('M76',gs,apiMatches)}${makeCard('M78',gs,apiMatches)}</div>
+      <div>${makeCard('M79',gs,apiMatches)}${makeCard('M80',gs,apiMatches)}</div>
+      <div>${makeCard('M86',gs,apiMatches)}${makeCard('M88',gs,apiMatches)}</div>
+      <div>${makeCard('M85',gs,apiMatches)}${makeCard('M87',gs,apiMatches)}</div>
+    </div>
+  </div>`;
+
+  main.innerHTML = `
+    <svg class="lines" id="bk-svg"></svg>
+    <div style="display:flex;align-items:flex-start;gap:6px">
+      ${r32L}${r16L}${qfL}${center}${qfR}${r16R}${r32R}
     </div>`;
 
-  setTimeout(drawLines, 50);
+  setTimeout(drawLines, 60);
 }
 
-// ══════════════════════════════════════════════════
-//  DISEGNA LINEE SVG
-// ══════════════════════════════════════════════════
+// ─── LINEE SVG ───────────────────────────────────────────────────────────────
 function drawLines() {
   const svg = document.getElementById('bk-svg');
-  if (!svg) return;
-  const canvas = document.getElementById('bracket-canvas');
-  const cRect = canvas.getBoundingClientRect();
-  svg.setAttribute('viewBox', `0 0 ${cRect.width} ${cRect.height}`);
+  const wrap = svg?.parentElement;
+  if (!svg || !wrap) return;
+
+  const wRect = wrap.getBoundingClientRect();
+  svg.setAttribute('viewBox', `0 0 ${wRect.width} ${wRect.height}`);
   svg.innerHTML = '';
 
-  function connectCards(fromId, toId, fromSide) {
-    const from = document.getElementById(fromId);
-    const to   = document.getElementById(toId);
-    if (!from || !to) return;
-    const fR = from.getBoundingClientRect();
-    const tR = to.getBoundingClientRect();
-    const x1 = fromSide==='left'  ? fR.right  - cRect.left : fR.left   - cRect.left;
-    const y1 = fR.top + fR.height/2 - cRect.top;
-    const x2 = fromSide==='left'  ? tR.left   - cRect.left : tR.right  - cRect.left;
-    const y2 = tR.top + tR.height/2 - cRect.top;
+  function line(fromId, toId, fromRight) {
+    const f = document.getElementById(fromId);
+    const t = document.getElementById(toId);
+    if (!f || !t) return;
+    const fR = f.getBoundingClientRect();
+    const tR = t.getBoundingClientRect();
+    const x1 = fromRight ? fR.right - wRect.left : fR.left - wRect.left;
+    const y1 = fR.top + fR.height/2 - wRect.top;
+    const x2 = fromRight ? tR.left  - wRect.left : tR.right - wRect.left;
+    const y2 = tR.top + tR.height/2 - wRect.top;
     const mx = (x1+x2)/2;
-    const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-    path.setAttribute('d', `M${x1},${y1} H${mx} V${y2} H${x2}`);
-    path.setAttribute('fill','none');
-    path.setAttribute('stroke','#253545');
-    path.setAttribute('stroke-width','2');
-    path.setAttribute('stroke-linecap','round');
-    svg.appendChild(path);
+    const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', `M${x1},${y1} H${mx} V${y2} H${x2}`);
+    p.setAttribute('fill','none');
+    p.setAttribute('stroke','#c8d8ee');
+    p.setAttribute('stroke-width','1.5');
+    p.setAttribute('stroke-linecap','round');
+    svg.appendChild(p);
   }
 
-  // Left bracket: R32 pairs → R16
-  const leftR32Map = [
-    ['M74','M89'],['M77','M89'],
-    ['M73','M90'],['M75','M90'],
-    ['M83','M93'],['M84','M93'],
-    ['M81','M94'],['M82','M94'],
-  ];
-  leftR32Map.forEach(([f,t]) => connectCards(f,t,'left'));
+  // SINISTRA: R32 → R16
+  [['M74','M89'],['M77','M89'],['M73','M90'],['M75','M90'],
+   ['M83','M93'],['M84','M93'],['M81','M94'],['M82','M94']].forEach(([f,t])=>line(f,t,true));
+  // R16 → QF
+  [['M89','M97'],['M90','M97'],['M93','M98'],['M94','M98']].forEach(([f,t])=>line(f,t,true));
+  // QF → SF
+  [['M97','M101'],['M98','M101']].forEach(([f,t])=>line(f,t,true));
+  // SF → Finale
+  line('M101','M104',true);
 
-  // Left R16 → QF
-  [['M89','M97_L'],['M90','M97_L'],['M93','M98_L'],['M94','M98_L']].forEach(([f,t])=>connectCards(f,t,'left'));
-
-  // Left QF → SF
-  [['M97_L','SF_L'],['M98_L','SF_L']].forEach(([f,t])=>connectCards(f,t,'left'));
-
-  // SF → Final
-  connectCards('SF_L','M104','left');
-  connectCards('SF_R','M104','right');
-
-  // Right bracket: R32 → R16
-  const rightR32Map = [
-    ['M76','M91'],['M78','M91'],
-    ['M79','M92'],['M80','M92'],
-    ['M86','M95'],['M88','M95'],
-    ['M85','M96'],['M87','M96'],
-  ];
-  rightR32Map.forEach(([f,t]) => connectCards(f,t,'right'));
-
-  // Right R16 → QF
-  [['M91','M99_R'],['M92','M99_R'],['M95','M100_R'],['M96','M100_R']].forEach(([f,t])=>connectCards(f,t,'right'));
-
-  // Right QF → SF
-  [['M99_R','SF_R'],['M100_R','SF_R']].forEach(([f,t])=>connectCards(f,t,'right'));
+  // DESTRA: R32 → R16
+  [['M76','M91'],['M78','M91'],['M79','M92'],['M80','M92'],
+   ['M86','M95'],['M88','M95'],['M85','M96'],['M87','M96']].forEach(([f,t])=>line(f,t,false));
+  // R16 → QF
+  [['M91','M99'],['M92','M99'],['M95','M100'],['M96','M100']].forEach(([f,t])=>line(f,t,false));
+  // QF → SF
+  [['M99','M102'],['M100','M102']].forEach(([f,t])=>line(f,t,false));
+  // SF → Finale
+  line('M102','M104',false);
 }
 
-// ══════════════════════════════════════════════════
-//  TIMESTAMP & POLL
-// ══════════════════════════════════════════════════
+// ─── TIMESTAMP & POLL ────────────────────────────────────────────────────────
 function updateTimestamp() {
   document.getElementById('last-update').textContent = 'Agg. '+new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 }
@@ -663,7 +715,7 @@ async function refresh() {
       const gs = buildGroupStandings(data.matches);
       renderGroups(gs);
       renderBestThirds(gs);
-      renderBracketVisual(gs, data.matches);
+      renderBracket(gs, data.matches);
     }
     updateTimestamp();
   } catch(e) {
