@@ -35,7 +35,7 @@
     .group-table thead th.col-team { text-align: left; padding-left: 10px; }
     .group-table tbody tr { border-top: 1px solid #eef2fb; }
     .group-table tbody tr:hover { background: #f5f8ff; }
-    .group-table td { padding: 9px 6px; text-align: center; font-size: 12px; color: #1a2744; }
+    .group-table td { padding: 9px 6px; text-align: center; font-size: 12px; }
     .group-table td.col-team { text-align: left; padding-left: 0; }
     .team-cell { display: flex; align-items: center; gap: 7px; }
     .pos-bar { width: 3px; height: 32px; flex-shrink: 0; }
@@ -65,101 +65,79 @@
     .status-elim { color: #dc2626; font-size: 11px; }
     .qualifying-separator td { background: #fef9c3; font-size: 11px; color: #92400e; font-weight: 700; text-align: center; padding: 6px; border-top: 2px dashed #fbbf24; }
 
-    /* ══════════════════════════════════
-       TABELLONE
-       ══════════════════════════════════ */
-    #tab-tabellone { background: #f0f4fa; padding: 20px 0 48px; }
+    /* ═══════════════════════════════
+       TABELLONE — un solo div, full width
+       ═══════════════════════════════ */
+    #tab-tabellone { background: #f0f4fa; padding: 16px 0 40px; }
 
-    .bk-title { text-align: center; padding: 0 0 18px; }
-    .bk-title span { display: inline-block; background: #fff; border: 1px solid #dde6f5; border-radius: 20px; padding: 5px 18px; font-size: 10px; font-weight: 800; color: #7a90b8; letter-spacing: 3px; text-transform: uppercase; }
-
-    .bk-scroll { overflow-x: auto; padding: 0 16px 16px; }
-
-    /* ── GRIGLIA PRINCIPALE ──
-       9 colonne: R32-L | R16-L | QF-L | SF-L | CENTRO | SF-R | QF-R | R16-R | R32-R
-       La colonna CENTRO contiene Finale in cima + 3°posto sotto
-    */
-    .bk-grid {
+    /* Griglia 9 colonne che occupa tutto il viewport */
+    .bk-wrap {
+      width: 100%;
+      padding: 0 8px;
       display: grid;
-      grid-template-columns: 160px 160px 160px 160px 180px 160px 160px 160px 160px;
-      grid-template-rows: auto;
-      gap: 0 8px;
-      min-width: 1460px;
+      /* 4 colonne sx + centro + 4 colonne dx, tutte uguali tranne il centro leggermente più largo */
+      grid-template-columns: repeat(4, 1fr) 1.2fr repeat(4, 1fr);
+      gap: 0 6px;
       align-items: start;
     }
 
-    /* Intestazioni colonne */
-    .bk-col-head {
+    .bk-col-label {
       text-align: center;
-      font-size: 9px; font-weight: 800; color: #aab8d4;
+      font-size: 8px; font-weight: 800; color: #aab8d4;
       letter-spacing: 2px; text-transform: uppercase;
-      padding-bottom: 10px;
+      padding-bottom: 8px; white-space: nowrap;
     }
+    .bk-col-label.gold { color: #b8960a; }
 
-    /* Ogni colonna è un flex column */
-    .bk-col {
-      display: flex;
-      flex-direction: column;
-    }
+    /* Ogni colonna è un flex vertical */
+    .bk-col { display: flex; flex-direction: column; }
 
-    /* ── CARD ── */
+    /* Spacer flessibile per allineamento verticale */
+    .bk-sp { flex-shrink: 0; }
+
+    /* ── Card ── */
     .mk {
       background: #fff;
       border: 1px solid #dde6f5;
-      border-radius: 7px;
+      border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 1px 4px rgba(10,31,92,0.06);
-      transition: border-color .15s;
+      box-shadow: 0 1px 3px rgba(10,31,92,0.07);
       width: 100%;
+      flex-shrink: 0;
     }
     .mk:hover { border-color: #93b4d8; }
-    .mk.live   { border-color: #16a34a; box-shadow: 0 0 8px rgba(22,163,74,0.18); }
+    .mk.live   { border-color: #16a34a; box-shadow: 0 0 6px rgba(22,163,74,0.2); }
     .mk.gold   { border-color: #c9a400; background: #fffcf0; }
     .mk.bronze { border-color: #9e7b5a; background: #fdf8f4; }
 
     .mk-head {
       background: #f5f8ff; border-bottom: 1px solid #eef2fb;
-      padding: 3px 7px; display: flex; justify-content: space-between; align-items: center;
+      padding: 2px 5px; display: flex; justify-content: space-between; align-items: center;
     }
-    .mk-id   { font-size: 8px; font-weight: 800; color: #b0bdd4; letter-spacing: 1px; }
-    .mk-date { font-size: 8px; color: #c8d4e4; }
-    .mk-live { color: #16a34a; font-size: 8px; font-weight: 800; animation: blink 1s infinite; }
-    .mk-ft   { color: #b0bdd4; font-size: 8px; }
+    .mk-id   { font-size: 7px; font-weight: 800; color: #b0bdd4; letter-spacing: 1px; }
+    .mk-date { font-size: 7px; color: #c8d4e4; }
+    .mk-live { color: #16a34a; font-size: 7px; font-weight: 800; animation: blink 1s infinite; }
+    .mk-ft   { color: #b0bdd4; font-size: 7px; }
 
-    .mk-row { display: flex; align-items: center; gap: 5px; padding: 6px 7px; border-top: 1px solid #eef2fb; }
+    .mk-row { display: flex; align-items: center; gap: 4px; padding: 5px 5px; border-top: 1px solid #eef2fb; }
     .mk-row:first-of-type { border-top: none; }
     .mk-row.win { background: #f0fdf4; }
 
-    .mk-flag    { width: 20px; height: 13px; object-fit: cover; border-radius: 2px; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-    .mk-flag-ph { width: 20px; height: 13px; background: #e8edf5; border-radius: 2px; flex-shrink: 0; }
-    .mk-name { font-size: 11px; font-weight: 700; color: #1a2744; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .mk-name.slot   { color: #b8c8dc; font-weight: 500; font-size: 10px; font-style: italic; }
+    .mk-flag    { width: 18px; height: 12px; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
+    .mk-flag-ph { width: 18px; height: 12px; background: #e8edf5; border-radius: 2px; flex-shrink: 0; }
+    .mk-name { font-size: 10px; font-weight: 700; color: #1a2744; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mk-name.slot   { color: #b8c8dc; font-weight: 500; font-size: 9px; font-style: italic; }
     .mk-name.winner { color: #0a1f5c; }
-    .mk-score { font-size: 12px; font-weight: 900; color: #1a5fa8; min-width: 13px; text-align: right; flex-shrink: 0; }
+    .mk-score { font-size: 11px; font-weight: 900; color: #1a5fa8; min-width: 11px; text-align: right; flex-shrink: 0; }
     .gold   .mk-score { color: #c9a400; }
     .bronze .mk-score { color: #9e7b5a; }
 
-    /* Spacer verticale tra card nella stessa colonna */
-    .sp { flex-shrink: 0; }
+    /* Colonna centrale: Finale sopra, 3° posto sotto */
+    .bk-center { display: flex; flex-direction: column; align-items: stretch; }
+    .bk-center-sub { font-size: 8px; font-weight: 700; color: #9e7b5a; text-align: center; margin-top: 14px; margin-bottom: 4px; letter-spacing: 1px; text-transform: uppercase; }
 
-    /* Colonna centrale: Finale in alto, 3° posto sotto */
-    .bk-center-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
-    .bk-center-label {
-      font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
-      text-align: center; padding-bottom: 6px;
-    }
-    .bk-center-label.gold   { color: #c9a400; }
-    .bk-center-label.bronze { color: #9e7b5a; }
-    .bk-center-sep { height: 24px; }
-
-    .bk-note { text-align: center; color: #aab8d4; font-size: 10px; padding: 16px 20px 0; font-style: italic; }
-
-    .state-msg { padding: 60px 20px; text-align: center; color: #aab8d4; font-size: 14px; line-height: 2; }
+    .bk-note { text-align: center; color: #aab8d4; font-size: 10px; padding: 12px 20px 0; font-style: italic; }
+    .state-msg { padding: 60px 20px; text-align: center; color: #aab8d4; font-size: 14px; line-height: 2; grid-column: 1/-1; }
     .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid #dde6f5; border-top-color: #1a5fa8; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px; }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
@@ -195,17 +173,13 @@
 </div>
 
 <div id="tab-tabellone" style="display:none">
-  <div class="bk-title"><span>Mondiale 2026 – Tabellone</span></div>
-  <div class="bk-scroll">
-    <div class="bk-grid" id="bk-grid">
-      <div class="state-msg" style="grid-column:1/-1"><div class="spinner"></div><br>Caricamento...</div>
-    </div>
+  <div class="bk-wrap" id="bk-wrap">
+    <div class="state-msg"><div class="spinner"></div><br>Caricamento...</div>
   </div>
-  <div class="bk-note">⚡ Slot in corsivo = posizione nel girone (es. 1A = 1° Girone A). Aggiornamento automatico.</div>
+  <div class="bk-note">⚡ Slot in corsivo = posizione nel girone (es. 1A = 1° Girone A)</div>
 </div>
 
 <script>
-// ── STRUTTURA ─────────────────────────────────────────────────────────────────
 const BK = {
   L: [
     { r32:[{id:'M74',s1:'GER', s2:'3ABCDF',api:537415},{id:'M77',s1:'1I',  s2:'3CDFGH',api:null  }], r16:{id:'M89',api:537375} },
@@ -214,34 +188,16 @@ const BK = {
     { r32:[{id:'M81',s1:'USA', s2:'3BEFIJ',api:537421},{id:'M82',s1:'1G',  s2:'3AEHIJ',api:null  }], r16:{id:'M94',api:537380} },
   ],
   R: [
-    { r32:[{id:'M76',s1:'BRA', s2:'JPN',   api:537423},{id:'M78',s1:'2E',  s2:'2I',    api:null  }], r16:{id:'M91',api:537377} },
+    { r32:[{id:'M76',s1:'BRA', s2:'2F',    api:537423},{id:'M78',s1:'2E',  s2:'2I',    api:null  }], r16:{id:'M91',api:537377} },
     { r32:[{id:'M79',s1:'MEX', s2:'3CEFHI',api:537425},{id:'M80',s1:'1L',  s2:'3EHIJK',api:null  }], r16:{id:'M92',api:537378} },
     { r32:[{id:'M86',s1:'ARG', s2:'2H',    api:537427},{id:'M88',s1:'2D',  s2:'2G',    api:null  }], r16:{id:'M95',api:537381} },
     { r32:[{id:'M85',s1:'SUI', s2:'3EFGLJ',api:537429},{id:'M87',s1:'2A',  s2:'3DEIJL',api:null  }], r16:{id:'M96',api:537382} },
   ],
-  qfL: [{id:'M97', api:537383},{id:'M98', api:537384}],
-  qfR: [{id:'M99', api:537385},{id:'M100',api:537386}],
-  sf1: {id:'M101',api:537387},
-  sf2: {id:'M102',api:537388},
-  fin: {id:'M104',api:537390},
-  trd: {id:'M103',api:537389},
+  qfL:[{id:'M97',api:537383},{id:'M98',api:537384}],
+  qfR:[{id:'M99',api:537385},{id:'M100',api:537386}],
+  sf1:{id:'M101',api:537387}, sf2:{id:'M102',api:537388},
+  fin:{id:'M104',api:537390}, trd:{id:'M103',api:537389},
 };
-
-// Altezze card e spaziatura
-// Ogni card ≈ 58px (head 22 + 2 righe 18px)
-// Coppia R32: 2 card + 4px gap = 120px
-// Gap tra coppie: 20px
-// Totale colonna R32: 4*(120+20)-20 = 540px
-const CH=58, PG=4, GG=20;
-function sp(px){ return `<div class="sp" style="height:${px}px"></div>`; }
-
-// Centro coppia i: i*(CH*2+PG+GG) + CH + PG/2
-function pairCY(i){ return i*(2*CH+PG+GG)+CH+PG/2; }
-// Centro tra coppie i*2 e i*2+1 (per QF)
-function qfCY(i){ return (pairCY(i*2)+pairCY(i*2+1))/2; }
-// Centro totale (per SF)
-const TOTAL = 4*(2*CH+PG+GG)-GG;
-const sfCY = TOTAL/2;
 
 const API='/.netlify/functions/api';
 let allMatches=[], pollTimer=null;
@@ -254,20 +210,15 @@ function switchTab(tab,el){
   });
 }
 
-async function getMatches(){
-  const r=await fetch(`${API}?type=matches`);
-  if(!r.ok) throw new Error(`HTTP ${r.status}`);
-  return r.json();
-}
+async function getMatches(){ const r=await fetch(`${API}?type=matches`); if(!r.ok)throw new Error(); return r.json(); }
 
-// ── GIRONI ───────────────────────────────────────────────────────────────────
 function buildGS(matches){
   const groups={};
   matches.filter(m=>m.stage==='GROUP_STAGE').forEach(m=>{
-    const g=m.group; if(!g) return;
-    if(!groups[g]) groups[g]={};
+    const g=m.group; if(!g)return;
+    if(!groups[g])groups[g]={};
     [m.homeTeam,m.awayTeam].forEach(t=>{
-      if(t&&t.id&&!groups[g][t.id]) groups[g][t.id]={team:t,played:0,won:0,draw:0,lost:0,goalsFor:0,goalsAgainst:0,points:0};
+      if(t&&t.id&&!groups[g][t.id])groups[g][t.id]={team:t,played:0,won:0,draw:0,lost:0,goalsFor:0,goalsAgainst:0,points:0};
     });
     if(m.status==='FINISHED'&&m.score?.fullTime){
       const hg=m.score.fullTime.home,ag=m.score.fullTime.away;
@@ -275,9 +226,7 @@ function buildGS(matches){
         const h=groups[g][m.homeTeam.id],a=groups[g][m.awayTeam.id];
         if(h&&a){
           h.played++;a.played++;h.goalsFor+=hg;h.goalsAgainst+=ag;a.goalsFor+=ag;a.goalsAgainst+=hg;
-          if(hg>ag){h.won++;h.points+=3;a.lost++;}
-          else if(hg<ag){a.won++;a.points+=3;h.lost++;}
-          else{h.draw++;h.points++;a.draw++;a.points++;}
+          if(hg>ag){h.won++;h.points+=3;a.lost++;}else if(hg<ag){a.won++;a.points+=3;h.lost++;}else{h.draw++;h.points++;a.draw++;a.points++;}
         }
       }
     }
@@ -287,8 +236,7 @@ function buildGS(matches){
     result[gn]=Object.values(teams).sort((a,b)=>{
       if(b.points!==a.points)return b.points-a.points;
       const gda=a.goalsFor-a.goalsAgainst,gdb=b.goalsFor-b.goalsAgainst;
-      if(gdb!==gda)return gdb-gda;
-      return b.goalsFor-a.goalsFor;
+      if(gdb!==gda)return gdb-gda; return b.goalsFor-a.goalsFor;
     }).map((t,i)=>({...t,position:i+1,goalDifference:t.goalsFor-t.goalsAgainst}));
   });
   return result;
@@ -297,87 +245,54 @@ function buildGS(matches){
 function renderGroups(gs){
   const grid=document.getElementById('groups-grid');
   const entries=Object.entries(gs);
-  if(!entries.length){grid.innerHTML='<div class="state-msg">Nessun girone trovato</div>';return;}
+  if(!entries.length){grid.innerHTML='<div class="state-msg">Nessun girone</div>';return;}
   grid.innerHTML=entries.map(([gn,table])=>{
-    const letter=gn.replace('GROUP_','');
-    return `<div class="group-card">
-      <div class="group-header"><span>GIRONE ${letter}</span><span>G·V·P·S·GD·PT</span></div>
-      <table class="group-table">
-        <thead><tr><th class="col-team" colspan="2">Squadra</th><th>G</th><th>V</th><th>P</th><th>S</th><th>GF</th><th>GS</th><th>DR</th><th>Pt</th></tr></thead>
-        <tbody>${table.map((row,i)=>{
-          const bc=i<2?'#22c55e':i===2?'#f59e0b':'#dde6f5';
-          const dr=row.goalDifference>0?'+'+row.goalDifference:row.goalDifference;
-          return `<tr>
-            <td class="col-team" style="padding:0;width:1px"><div class="pos-bar" style="background:${bc}"></div></td>
-            <td class="col-team"><div class="team-cell"><span class="pos-num">${row.position}</span>
-            ${row.team.crest?`<img class="team-flag" src="${row.team.crest}" alt="${row.team.tla}" onerror="this.outerHTML='<div class=team-flag-placeholder></div>'">`:'<div class="team-flag-placeholder"></div>'}
-            <span class="team-short">${row.team.shortName||row.team.tla||row.team.name}</span></div></td>
-            <td>${row.played}</td><td>${row.won}</td><td>${row.draw}</td><td>${row.lost}</td>
-            <td>${row.goalsFor}</td><td>${row.goalsAgainst}</td><td>${dr}</td><td class="pts-cell">${row.points}</td>
-          </tr>`;
-        }).join('')}</tbody>
-      </table></div>`;
+    const l=gn.replace('GROUP_','');
+    return`<div class="group-card"><div class="group-header"><span>GIRONE ${l}</span><span>G·V·P·S·GD·PT</span></div>
+    <table class="group-table"><thead><tr><th class="col-team" colspan="2">Squadra</th><th>G</th><th>V</th><th>P</th><th>S</th><th>GF</th><th>GS</th><th>DR</th><th>Pt</th></tr></thead>
+    <tbody>${table.map((r,i)=>{const bc=i<2?'#22c55e':i===2?'#f59e0b':'#dde6f5';const dr=r.goalDifference>0?'+'+r.goalDifference:r.goalDifference;
+    return`<tr><td class="col-team" style="padding:0;width:1px"><div class="pos-bar" style="background:${bc}"></div></td>
+    <td class="col-team"><div class="team-cell"><span class="pos-num">${r.position}</span>
+    ${r.team.crest?`<img class="team-flag" src="${r.team.crest}" alt="${r.team.tla}" onerror="this.outerHTML='<div class=team-flag-placeholder></div>'">`:'<div class="team-flag-placeholder"></div>'}
+    <span class="team-short">${r.team.shortName||r.team.tla||r.team.name}</span></div></td>
+    <td>${r.played}</td><td>${r.won}</td><td>${r.draw}</td><td>${r.lost}</td><td>${r.goalsFor}</td><td>${r.goalsAgainst}</td><td>${dr}</td><td class="pts-cell">${r.points}</td></tr>`;
+    }).join('')}</tbody></table></div>`;
   }).join('');
 }
 
-function getBestThirds(gs){
+function getBT(gs){
   const t=[];
-  Object.entries(gs).forEach(([gn,table])=>{
-    if(table.length>=3)t.push({...table[2],groupLetter:gn.replace('GROUP_','')});
-  });
-  return t.sort((a,b)=>{
-    if(b.points!==a.points)return b.points-a.points;
-    const gda=a.goalsFor-a.goalsAgainst,gdb=b.goalsFor-b.goalsAgainst;
-    if(gdb!==gda)return gdb-gda;
-    return b.goalsFor-a.goalsFor;
-  });
+  Object.entries(gs).forEach(([gn,table])=>{if(table.length>=3)t.push({...table[2],groupLetter:gn.replace('GROUP_','')});});
+  return t.sort((a,b)=>{if(b.points!==a.points)return b.points-a.points;const gda=a.goalsFor-a.goalsAgainst,gdb=b.goalsFor-b.goalsAgainst;if(gdb!==gda)return gdb-gda;return b.goalsFor-a.goalsFor;});
 }
 
 function renderBestThirds(gs){
-  const thirds=getBestThirds(gs);
-  const c=document.getElementById('thirds-content');
-  if(!thirds.length){c.innerHTML='<div class="state-msg">Dati non ancora disponibili</div>';return;}
-  c.innerHTML=`<table class="thirds-table">
-    <thead><tr><th>#</th><th>GRP</th><th class="col-team">Squadra</th><th>G</th><th>V</th><th>P</th><th>S</th><th>GF</th><th>GS</th><th>DR</th><th>Pt</th><th>Stato</th></tr></thead>
-    <tbody>${thirds.map((t,i)=>{
-      const adv=i<8;const dr=t.goalDifference>0?'+'+t.goalDifference:t.goalDifference;
-      const sep=i===8?`<tr class="qualifying-separator"><td colspan="12">⬆️ Qualificate &nbsp;|&nbsp; ⬇️ Eliminate</td></tr>`:'';
-      return `${sep}<tr class="${adv?'advances':'eliminated'}">
-        <td class="rank-num">${i+1}</td><td><span class="group-badge">GRP ${t.groupLetter}</span></td>
-        <td class="col-team"><div class="team-cell">
-          ${t.team.crest?`<img class="team-flag" src="${t.team.crest}" alt="${t.team.tla}" onerror="this.outerHTML='<div class=team-flag-placeholder></div>'">`:'<div class="team-flag-placeholder"></div>'}
-          <span class="team-short">${t.team.shortName||t.team.tla||t.team.name}</span></div></td>
-        <td>${t.played}</td><td>${t.won}</td><td>${t.draw}</td><td>${t.lost}</td>
-        <td>${t.goalsFor}</td><td>${t.goalsAgainst}</td><td>${dr}</td><td class="pts-cell">${t.points}</td>
-        <td>${adv?'<span class="status-advance">✓ Qualificata</span>':'<span class="status-elim">✗ Eliminata</span>'}</td>
-      </tr>`;
-    }).join('')}</tbody></table>`;
+  const thirds=getBT(gs),c=document.getElementById('thirds-content');
+  if(!thirds.length){c.innerHTML='<div class="state-msg">Dati non disponibili</div>';return;}
+  c.innerHTML=`<table class="thirds-table"><thead><tr><th>#</th><th>GRP</th><th class="col-team">Squadra</th><th>G</th><th>V</th><th>P</th><th>S</th><th>GF</th><th>GS</th><th>DR</th><th>Pt</th><th>Stato</th></tr></thead>
+  <tbody>${thirds.map((t,i)=>{const adv=i<8,dr=t.goalDifference>0?'+'+t.goalDifference:t.goalDifference;
+  const sep=i===8?`<tr class="qualifying-separator"><td colspan="12">⬆️ Qualificate &nbsp;|&nbsp; ⬇️ Eliminate</td></tr>`:'';
+  return`${sep}<tr class="${adv?'advances':'eliminated'}"><td class="rank-num">${i+1}</td><td><span class="group-badge">GRP ${t.groupLetter}</span></td>
+  <td class="col-team"><div class="team-cell">${t.team.crest?`<img class="team-flag" src="${t.team.crest}" alt="${t.team.tla}" onerror="this.outerHTML='<div class=team-flag-placeholder></div>'">`:'<div class="team-flag-placeholder"></div>'}
+  <span class="team-short">${t.team.shortName||t.team.tla||t.team.name}</span></div></td>
+  <td>${t.played}</td><td>${t.won}</td><td>${t.draw}</td><td>${t.lost}</td><td>${t.goalsFor}</td><td>${t.goalsAgainst}</td><td>${dr}</td><td class="pts-cell">${t.points}</td>
+  <td>${adv?'<span class="status-advance">✓ Qualificata</span>':'<span class="status-elim">✗ Eliminata</span>'}</td></tr>`;
+  }).join('')}</tbody></table>`;
 }
 
-// ── CARD BUILDER ─────────────────────────────────────────────────────────────
+// ── CARD ─────────────────────────────────────────────────────────────────────
 function am(id){ return id?allMatches.find(m=>m.id===id)||null:null; }
+function fmtD(u){ if(!u)return''; const d=new Date(u); return d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'})+' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'}); }
 
-function fmtDate(u){
-  if(!u)return'';
-  const d=new Date(u);
-  return d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'})
-        +' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
-}
-
-function mkCard(label,s1,s2,apiId,cls=''){
+function mk(label,s1,s2,apiId,cls=''){
   const m=am(apiId);
-  let t1=null,t2=null,hg=null,ag=null,live=false,fin=false,dateStr='';
+  let t1=null,t2=null,hg=null,ag=null,live=false,fin=false,ds='';
   if(m){
-    if(m.homeTeam?.id)t1=m.homeTeam;
-    if(m.awayTeam?.id)t2=m.awayTeam;
-    const ft=m.score?.fullTime;
-    hg=ft?.home??null;ag=ft?.away??null;
-    live=['IN_PLAY','PAUSED','LIVE'].includes(m.status);
-    fin=m.status==='FINISHED';
-    dateStr=fmtDate(m.utcDate);
+    if(m.homeTeam?.id)t1=m.homeTeam; if(m.awayTeam?.id)t2=m.awayTeam;
+    const ft=m.score?.fullTime; hg=ft?.home??null; ag=ft?.away??null;
+    live=['IN_PLAY','PAUSED','LIVE'].includes(m.status); fin=m.status==='FINISHED'; ds=fmtD(m.utcDate);
   }
-  const t1w=fin&&hg!==null&&hg>ag,t2w=fin&&ag!==null&&ag>hg;
-
+  const t1w=fin&&hg!==null&&hg>ag, t2w=fin&&ag!==null&&ag>hg;
   function row(team,slot,score,isWin){
     const name=team?(team.shortName||team.tla||team.name):null;
     const flag=team?.crest?`<img class="mk-flag" src="${team.crest}" alt="${team.tla||''}" onerror="this.outerHTML='<div class=mk-flag-ph></div>'">` :'<div class="mk-flag-ph"></div>';
@@ -385,120 +300,132 @@ function mkCard(label,s1,s2,apiId,cls=''){
     const sc=(fin&&score!==null&&score!==undefined)?`<span class="mk-score">${score}</span>`:'';
     return`<div class="mk-row${isWin?' win':''}">${flag}${nm}${sc}</div>`;
   }
-
   return`<div class="mk${cls?' '+cls:''}${live?' live':''}">
-    <div class="mk-head">
-      <span class="mk-id">${label}</span>
-      ${live?'<span class="mk-live">● LIVE</span>':fin?'<span class="mk-ft">FT</span>':`<span class="mk-date">${dateStr}</span>`}
-    </div>
-    ${row(t1,s1,hg,t1w)}
-    ${row(t2,s2,ag,t2w)}
-  </div>`;
+    <div class="mk-head"><span class="mk-id">${label}</span>${live?'<span class="mk-live">●LIVE</span>':fin?'<span class="mk-ft">FT</span>':`<span class="mk-date">${ds}</span>`}</div>
+    ${row(t1,s1,hg,t1w)}${row(t2,s2,ag,t2w)}</div>`;
 }
 
-// ── RENDER TABELLONE ─────────────────────────────────────────────────────────
+// ── RENDER ───────────────────────────────────────────────────────────────────
 function renderBracket(){
-  const grid=document.getElementById('bk-grid');
+  const wrap=document.getElementById('bk-wrap');
 
-  // ── Costruisce una colonna come stringa HTML ──
-  // cards = array di { html, topOffset } dove topOffset è il margine-top da aggiungere
-  // Usiamo flex-col con sp() come spacer
+  // Ogni colonna è costruita come array di {gap, card}
+  // Il gap è in percentuale dell'altezza totale
+  // Usiamo flex-direction:column con spacer flex per il posizionamento
 
-  function buildCol(label, items){
-    // items: [{marginTop, card}]
-    let html=`<div class="bk-col-head">${label}</div><div class="bk-col">`;
+  // Parametri proporzionali: la colonna R32 ha 4 coppie di 2 card
+  // Definiamo tutto in "unità" dove 1u = altezza card
+  // Card H = 1u, gap coppia = 0.08u, gap gruppi = 0.35u
+  // Coppia = 2u + 0.08u = 2.08u, gruppo = 2.08u + 0.35u = 2.43u (tranne l'ultimo)
+  // Totale 4 gruppi = 4*2.08 + 3*0.35 = 8.32 + 1.05 = 9.37u
+  // Centro coppia i = i*2.43 + 1.04
+  // Centro R16 (coppia i) → top = centro - 0.5u
+  // Centro QF (gruppi 0-1 e 2-3) → media dei centri R16
+  // Centro SF → 9.37/2 = 4.685u
+
+  // Usiamo flex-grow per i spacer: ogni spacer ha flex-grow proporzionale alle unità
+
+  const PG=0.1; // gap tra card della coppia
+  const GG=0.4; // gap tra gruppi
+  const CH=1.0; // altezza carta
+
+  function pairCY(i){ return i*(2*CH+PG+GG)+CH+PG/2; }
+  function qfCY(i){ return (pairCY(i*2)+pairCY(i*2+1))/2; }
+  const TOTAL = 4*(2*CH+PG+GG)-GG;
+  const sfCY = TOTAL/2;
+
+  function colHTML(label, items, labelCls=''){
+    // items: [{top (in unità), card html}]
+    // Costruiamo con flex + spacer
+    let h=`<div class="bk-col-label${labelCls?' '+labelCls:''}">${label}</div><div class="bk-col" style="flex:1">`;
     let cursor=0;
-    items.forEach(item=>{
-      const delta=item.top-cursor;
-      if(delta>0){ html+=sp(delta); cursor+=delta; }
-      html+=item.card;
-      cursor+=CH;
+    items.forEach(({top,card})=>{
+      const gap=top-cursor;
+      if(gap>0.001) h+=`<div class="bk-sp" style="flex:${gap.toFixed(4)} 0 0"></div>`;
+      h+=card;
+      cursor=top+CH;
     });
-    html+='</div>';
-    return html;
+    const rem=TOTAL-cursor;
+    if(rem>0.001) h+=`<div class="bk-sp" style="flex:${rem.toFixed(4)} 0 0"></div>`;
+    h+='</div>';
+    return h;
   }
 
-  // ── R32 Sinistra ──
-  const r32L_items=[];
+  // R32 Sinistra
+  const r32L=[];
   BK.L.forEach((g,gi)=>{
     const t0=gi*(2*CH+PG+GG);
-    r32L_items.push({top:t0,       card:mkCard(g.r32[0].id,g.r32[0].s1,g.r32[0].s2,g.r32[0].api)});
-    r32L_items.push({top:t0+CH+PG, card:mkCard(g.r32[1].id,g.r32[1].s1,g.r32[1].s2,g.r32[1].api)});
+    r32L.push({top:t0,        card:mk(g.r32[0].id,g.r32[0].s1,g.r32[0].s2,g.r32[0].api)});
+    r32L.push({top:t0+CH+PG, card:mk(g.r32[1].id,g.r32[1].s1,g.r32[1].s2,g.r32[1].api)});
   });
 
-  // ── R16 Sinistra ──
-  const r16L_items=BK.L.map((g,gi)=>({
-    top: Math.round(pairCY(gi)-CH/2),
-    card:mkCard(g.r16.id,'W '+g.r32[0].id,'W '+g.r32[1].id,g.r16.api)
+  // R16 Sinistra
+  const r16L=BK.L.map((g,gi)=>({
+    top:pairCY(gi)-CH/2,
+    card:mk(g.r16.id,'W '+g.r32[0].id,'W '+g.r32[1].id,g.r16.api)
   }));
 
-  // ── QF Sinistra ──
-  const qfL_items=BK.qfL.map((qf,qi)=>({
-    top: Math.round(qfCY(qi)-CH/2),
-    card:mkCard(qf.id,'W '+BK.L[qi*2].r16.id,'W '+BK.L[qi*2+1].r16.id,qf.api)
+  // QF Sinistra
+  const qfL=BK.qfL.map((qf,qi)=>({
+    top:qfCY(qi)-CH/2,
+    card:mk(qf.id,'W '+BK.L[qi*2].r16.id,'W '+BK.L[qi*2+1].r16.id,qf.api)
   }));
 
-  // ── SF Sinistra ──
-  const sf1_items=[{
-    top: Math.round(sfCY-CH/2),
-    card:mkCard(BK.sf1.id,'W '+BK.qfL[0].id,'W '+BK.qfL[1].id,BK.sf1.api)
-  }];
+  // SF Sinistra
+  const sf1=[{top:sfCY-CH/2, card:mk(BK.sf1.id,'W '+BK.qfL[0].id,'W '+BK.qfL[1].id,BK.sf1.api)}];
 
-  // ── Colonna Centrale: Finale + 3° posto ──
-  // Finale in cima, 3° posto subito sotto
+  // Colonna centrale
+  const finCard=mk(BK.fin.id,'W M101','W M102',BK.fin.api,'gold');
+  const trdCard=mk(BK.trd.id,'Perdente M101','Perdente M102',BK.trd.api,'bronze');
   const centerHTML=`
-    <div class="bk-col-head" style="color:#c9a400">🏆 Finale</div>
-    <div class="bk-center-col">
-      <div class="bk-center-label gold">19 luglio 2026</div>
-      ${mkCard(BK.fin.id,'W '+BK.sf1.id,'W '+BK.sf2.id,BK.fin.api,'gold')}
-      <div class="bk-center-sep"></div>
-      <div class="bk-center-label bronze">🥉 3° Posto — 18 luglio</div>
-      ${mkCard(BK.trd.id,'Perdente '+BK.sf1.id,'Perdente '+BK.sf2.id,BK.trd.api,'bronze')}
+    <div class="bk-col-label gold">🏆 Finale</div>
+    <div class="bk-center" style="flex:1">
+      <div style="flex:${(sfCY-CH/2).toFixed(4)} 0 0" class="bk-sp"></div>
+      ${finCard}
+      <div class="bk-center-sub">🥉 3° Posto</div>
+      ${trdCard}
+      <div style="flex:1" class="bk-sp"></div>
     </div>`;
 
-  // ── SF Destra ──
-  const sf2_items=[{
-    top: Math.round(sfCY-CH/2),
-    card:mkCard(BK.sf2.id,'W '+BK.qfR[0].id,'W '+BK.qfR[1].id,BK.sf2.api)
-  }];
+  // SF Destra
+  const sf2=[{top:sfCY-CH/2, card:mk(BK.sf2.id,'W '+BK.qfR[0].id,'W '+BK.qfR[1].id,BK.sf2.api)}];
 
-  // ── QF Destra ──
-  const qfR_items=BK.qfR.map((qf,qi)=>({
-    top: Math.round(qfCY(qi)-CH/2),
-    card:mkCard(qf.id,'W '+BK.R[qi*2].r16.id,'W '+BK.R[qi*2+1].r16.id,qf.api)
+  // QF Destra
+  const qfR=BK.qfR.map((qf,qi)=>({
+    top:qfCY(qi)-CH/2,
+    card:mk(qf.id,'W '+BK.R[qi*2].r16.id,'W '+BK.R[qi*2+1].r16.id,qf.api)
   }));
 
-  // ── R16 Destra ──
-  const r16R_items=BK.R.map((g,gi)=>({
-    top: Math.round(pairCY(gi)-CH/2),
-    card:mkCard(g.r16.id,'W '+g.r32[0].id,'W '+g.r32[1].id,g.r16.api)
+  // R16 Destra
+  const r16R=BK.R.map((g,gi)=>({
+    top:pairCY(gi)-CH/2,
+    card:mk(g.r16.id,'W '+g.r32[0].id,'W '+g.r32[1].id,g.r16.api)
   }));
 
-  // ── R32 Destra ──
-  const r32R_items=[];
+  // R32 Destra
+  const r32R=[];
   BK.R.forEach((g,gi)=>{
     const t0=gi*(2*CH+PG+GG);
-    r32R_items.push({top:t0,       card:mkCard(g.r32[0].id,g.r32[0].s1,g.r32[0].s2,g.r32[0].api)});
-    r32R_items.push({top:t0+CH+PG, card:mkCard(g.r32[1].id,g.r32[1].s1,g.r32[1].s2,g.r32[1].api)});
+    r32R.push({top:t0,        card:mk(g.r32[0].id,g.r32[0].s1,g.r32[0].s2,g.r32[0].api)});
+    r32R.push({top:t0+CH+PG, card:mk(g.r32[1].id,g.r32[1].s1,g.r32[1].s2,g.r32[1].api)});
   });
 
-  grid.innerHTML=`
-    ${buildCol('Round of 32', r32L_items)}
-    ${buildCol('Round of 16', r16L_items)}
-    ${buildCol('Quarti',       qfL_items)}
-    ${buildCol('Semifinale',   sf1_items)}
-    <div>${centerHTML}</div>
-    ${buildCol('Semifinale',   sf2_items)}
-    ${buildCol('Quarti',       qfR_items)}
-    ${buildCol('Round of 16', r16R_items)}
-    ${buildCol('Round of 32', r32R_items)}
-  `;
+  wrap.innerHTML=`
+    <div style="display:contents">
+      ${colHTML('Round of 32', r32L)}
+      ${colHTML('Round of 16', r16L)}
+      ${colHTML('Quarti di Finale', qfL)}
+      ${colHTML('Semifinale', sf1)}
+      <div>${centerHTML}</div>
+      ${colHTML('Semifinale', sf2)}
+      ${colHTML('Quarti di Finale', qfR)}
+      ${colHTML('Round of 16', r16R)}
+      ${colHTML('Round of 32', r32R)}
+    </div>`;
 }
 
-// ── POLL ─────────────────────────────────────────────────────────────────────
 function updateTimestamp(){
-  document.getElementById('last-update').textContent=
-    'Agg. '+new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  document.getElementById('last-update').textContent='Agg. '+new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 }
 function hasLive(){ return allMatches.some(m=>['IN_PLAY','PAUSED','LIVE'].includes(m.status)); }
 
@@ -508,19 +435,16 @@ async function refresh(){
     if(data?.matches){
       allMatches=data.matches;
       const gs=buildGS(data.matches);
-      renderGroups(gs);
-      renderBestThirds(gs);
-      renderBracket();
+      renderGroups(gs); renderBestThirds(gs); renderBracket();
     }
     updateTimestamp();
   }catch(e){
-    console.error('Errore:',e);
+    console.error(e);
     document.getElementById('last-update').textContent='⚠️ Errore connessione';
   }
   clearTimeout(pollTimer);
   pollTimer=setTimeout(refresh,hasLive()?60000:180000);
 }
-
 refresh();
 </script>
 </body>
