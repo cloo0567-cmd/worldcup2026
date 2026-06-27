@@ -65,182 +65,61 @@
     .qualifying-separator td { background: #fef9c3; font-size: 11px; color: #92400e; font-weight: 700; text-align: center; padding: 6px; border-top: 2px dashed #fbbf24; }
 
     /* ═══════════════════════════════
-       TABELLONE LIGHT — NUOVO
+       TABELLONE LIGHT
        ═══════════════════════════════ */
-    #tab-tabellone {
-      background: #f0f4fa;
-      min-height: calc(100vh - 130px);
-      padding: 20px 0 40px;
-    }
+    #tab-tabellone { background: #f0f4fa; min-height: calc(100vh - 130px); padding: 20px 0 40px; }
 
-    .bk-page-title {
-      text-align: center;
-      padding: 0 0 18px;
-    }
-    .bk-page-title span {
-      display: inline-block;
-      background: #fff;
-      border: 1px solid #dde6f5;
-      border-radius: 20px;
-      padding: 5px 18px;
-      font-size: 10px;
-      font-weight: 800;
-      color: #7a90b8;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
+    .bk-page-title { text-align: center; padding: 0 0 18px; }
+    .bk-page-title span { display: inline-block; background: #fff; border: 1px solid #dde6f5; border-radius: 20px; padding: 5px 18px; font-size: 10px; font-weight: 800; color: #7a90b8; letter-spacing: 3px; text-transform: uppercase; }
 
-    /* Scroll wrapper */
     .bk-scroll { overflow-x: auto; padding: 0 12px 20px; }
 
-    /* Main flex row: left | center | right */
-    .bk-main {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      min-width: 1020px;
-      justify-content: center;
-      position: relative;
-    }
+    .bk-main { display: flex; align-items: flex-start; gap: 5px; min-width: 1060px; justify-content: center; position: relative; }
 
-    /* Each half */
-    .bk-half {
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
+    .bk-col { display: flex; flex-direction: column; padding: 0 3px; }
+    .bk-col-label { text-align: center; font-size: 9px; font-weight: 800; color: #aab8d4; letter-spacing: 2px; text-transform: uppercase; padding-bottom: 8px; white-space: nowrap; }
 
-    /* Round column */
-    .bk-col {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      padding: 0 4px;
-    }
-
-    .bk-col-label {
-      text-align: center;
-      font-size: 9px;
-      font-weight: 800;
-      color: #aab8d4;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding-bottom: 8px;
-    }
-
-    /* Match card */
-    .bk-card {
-      background: #fff;
-      border: 1px solid #dde6f5;
-      border-radius: 8px;
-      overflow: hidden;
-      width: 138px;
-      margin: 6px 0;
-      box-shadow: 0 1px 4px rgba(10,31,92,0.06);
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .bk-card:hover { border-color: #1a5fa8; box-shadow: 0 2px 8px rgba(10,31,92,0.13); }
+    /* Cards */
+    .bk-card { background: #fff; border: 1px solid #dde6f5; border-radius: 8px; overflow: hidden; width: 140px; box-shadow: 0 1px 4px rgba(10,31,92,0.06); transition: border-color 0.2s; flex-shrink: 0; }
+    .bk-card:hover { border-color: #1a5fa8; }
     .bk-card.live { border-color: #16a34a; box-shadow: 0 0 8px rgba(22,163,74,0.2); }
-    .bk-card.final-card { width: 150px; border-color: #c9a400; background: #fffdf0; }
-    .bk-card.third-card { width: 150px; }
+    .bk-card.final-card { width: 152px; border-color: #c9a400; background: #fffdf0; }
+    .bk-card.third-card { width: 152px; }
 
-    .bk-card-head {
-      background: #f5f8ff;
-      border-bottom: 1px solid #eef2fb;
-      padding: 3px 7px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .bk-card-head { background: #f5f8ff; border-bottom: 1px solid #eef2fb; padding: 3px 7px; display: flex; justify-content: space-between; align-items: center; }
     .bk-card-id { font-size: 8px; font-weight: 800; color: #aab8d4; letter-spacing: 1px; }
     .bk-card-date { font-size: 8px; color: #c0cce0; }
     .bk-live-tag { color: #16a34a; font-size: 8px; font-weight: 800; animation: blink 1s infinite; }
     .bk-ft-tag { color: #aab8d4; font-size: 8px; }
 
-    .bk-row {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 7px 7px;
-      border-top: 1px solid #eef2fb;
-    }
+    .bk-row { display: flex; align-items: center; gap: 5px; padding: 7px 7px; border-top: 1px solid #eef2fb; }
     .bk-row:first-of-type { border-top: none; }
     .bk-row.win { background: #f0fdf4; }
 
     .bk-flag { width: 20px; height: 13px; object-fit: cover; border-radius: 2px; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.12); }
     .bk-flag-ph { width: 20px; height: 13px; background: #e8edf5; border-radius: 2px; flex-shrink: 0; }
 
-    .bk-name {
-      font-size: 11px;
-      font-weight: 700;
-      color: #1a2744;
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    .bk-name { font-size: 11px; font-weight: 700; color: #1a2744; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .bk-name.slot { color: #b0bdd4; font-weight: 600; font-size: 10px; font-style: italic; }
     .bk-name.winner { color: #0a1f5c; }
 
-    .bk-score {
-      font-size: 12px;
-      font-weight: 900;
-      color: #1a5fa8;
-      min-width: 13px;
-      text-align: right;
-      flex-shrink: 0;
-    }
+    .bk-score { font-size: 12px; font-weight: 900; color: #1a5fa8; min-width: 13px; text-align: right; flex-shrink: 0; }
     .final-card .bk-score { color: #c9a400; }
 
-    /* Connectors via SVG */
-    .bk-main svg.lines {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      overflow: visible;
-    }
+    /* Spacers per allineamento verticale */
+    .bk-spacer { flex-shrink: 0; }
 
-    /* Center column */
-    .bk-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      padding: 0 14px;
-      flex-shrink: 0;
-    }
-    .bk-trophy { font-size: 28px; }
-    .bk-final-label {
-      font-size: 9px;
-      font-weight: 800;
-      color: #c9a400;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-    .bk-third-label {
-      font-size: 8px;
-      color: #aab8d4;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: 10px;
-    }
-    .bk-sf-label {
-      font-size: 9px;
-      font-weight: 800;
-      color: #aab8d4;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+    /* Connettori SVG */
+    .bk-main svg.lines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
 
-    .bk-note {
-      text-align: center;
-      color: #aab8d4;
-      font-size: 10px;
-      padding: 18px 20px 0;
-      font-style: italic;
-    }
+    /* Centro */
+    .bk-center { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 0 12px; flex-shrink: 0; }
+    .bk-trophy { font-size: 26px; }
+    .bk-final-label { font-size: 9px; font-weight: 800; color: #c9a400; letter-spacing: 3px; text-transform: uppercase; }
+    .bk-third-label { font-size: 8px; color: #aab8d4; letter-spacing: 2px; text-transform: uppercase; margin-top: 8px; }
+    .bk-sf-label { font-size: 9px; font-weight: 800; color: #aab8d4; letter-spacing: 2px; text-transform: uppercase; }
 
+    .bk-note { text-align: center; color: #aab8d4; font-size: 10px; padding: 18px 20px 0; font-style: italic; }
     .state-msg { padding: 60px 20px; text-align: center; color: #aab8d4; font-size: 14px; line-height: 2; }
     .spinner { display: inline-block; width: 32px; height: 32px; border: 3px solid #dde6f5; border-top-color: #1a5fa8; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px; }
     @keyframes spin { to { transform: rotate(360deg); } }
@@ -260,7 +139,6 @@
   <div class="tab-btn" onclick="switchTab('tabellone',this)">🏆 Tabellone</div>
 </div>
 
-<!-- GIRONI -->
 <div id="tab-gironi">
   <div class="legend">
     <div class="legend-item"><div class="legend-bar" style="background:#22c55e"></div><span>Qualificate (1ª e 2ª)</span></div>
@@ -270,7 +148,6 @@
   <div id="groups-grid" class="groups-grid"><div class="state-msg"><div class="spinner"></div><br>Caricamento gironi...</div></div>
 </div>
 
-<!-- MIGLIORI TERZE -->
 <div id="tab-terze" style="display:none">
   <div class="thirds-page">
     <div class="thirds-info">Le <strong>8 migliori terze</strong> su 12 si qualificano. Criteri: punti → differenza reti → gol fatti.</div>
@@ -278,7 +155,6 @@
   </div>
 </div>
 
-<!-- TABELLONE LIGHT -->
 <div id="tab-tabellone" style="display:none">
   <div class="bk-page-title"><span>Mondiale 2026 – Tabellone</span></div>
   <div class="bk-scroll">
@@ -287,95 +163,65 @@
       <div class="state-msg"><div class="spinner"></div><br>Caricamento tabellone...</div>
     </div>
   </div>
-  <div class="bk-note">⚡ Proiezione basata sulle classifiche attuali. Gli slot in corsivo indicano la posizione nel girone (es. 1A = 1° del Girone A).</div>
+  <div class="bk-note">⚡ Le squadre in corsivo indicano lo slot (es. 1A = 1° Girone A). Aggiornamento automatico.</div>
 </div>
 
 <script>
-// ─── STRUTTURA SLOT DEL TABELLONE (da foto ufficiale) ────────────────────────
-// LATO SINISTRO (Left bracket)
-// R32: M74(GER vs 3ABCDF), M77(E vs 3CDFGH), M73(RSA vs CAN), M75(1F vs MAR)
-//      M83(2K vs 2L), M84(1H vs 2J), M81(USA vs 3BEFIJ), M82(1G vs 3AEHIJ) [wait - da foto]
-// Rileggo dalla foto 2 esattamente:
+// ─── STRUTTURA TABELLONE: mappa slot → API match ID ──────────────────────────
+// L'API football-data.org usa i suoi ID numerici per i match del knockout.
+// Dall'analisi del JSON: LAST_32 = id 537415..537430, LAST_16 = 537375..537382, ecc.
+// Per i gironi il tabellone usa le classifiche calcolate (slot come "1A", "2B", "3ABCDF").
 
-// Lato SINISTRA (colonna sinistra):
-// M74: GER / 3ABCDF
-// M77: E   / 3CDFGH
-// M73: RSA / CAN
-// M75: 1F  / MAR
-// M83: 2K  / 2L
-// M84: 1H  / 2J  [nella foto: 1H / 2J]
-// M81: USA / 3BEFIJ
-// M82: 1G  / 3AEHIJ
+// Struttura del tabellone (da foto ufficiale FIFA 2026):
+// LATO SINISTRO                      LATO DESTRO
+// M74: GER    / 3ABCDF   M77: E   / 3CDFGH    M76: BRA / 2F      M78: 2E / 2I
+// M73: RSA    / CAN       M75: 1F  / MAR        M79: MEX / 3CEFHI  M80: 1L / 3EHIJK
+// M83: 2K     / 2L        M84: 1H  / 2J         M86: ARG / 2H      M88: 2D / 2G
+// M81: USA    / 3BEFIJ    M82: 1G  / 3AEHIJ     M85: SUI / 3EFGLJ  M87: 2A / 3DEIJL
 
-// Lato DESTRA:
-// M76: BRA / 2F
-// M78: 2E  / 2I
-// M79: MEX / 3CEFHI
-// M80: 1L  / 3EHIJK
-// M86: ARG / 2H
-// M88: 2D  / 2G
-// M85: SUI / 3EFGLIJ  [controllare]
-// M87: 2A  / 3DEIJL
+// Mapping: slot ID → API match id (da analisi del JSON LAST_32)
+// L'API ha 16 partite LAST_32 con id 537415-537430, ma molti homeTeam/awayTeam null
+// I pochi con squadre già definite: 537417(RSA/CAN), 537423(BRA/JPN), 537415(GER/?),
+// 537418(NED/MAR), 537425(MEX/?), 537421(USA/BIH), 537429(SUI/?), 537427(ARG/?)
+// Gli altri slot vengono risolti dinamicamente dai gironi.
 
-// R16 sinistra: M89(W74/W77), M90(W73/W75), M93(W83/W84), M94(W81/W82)
-// R16 destra:   M91(W76/W78), M92(W79/W80), M95(W86/W88), M96(W85/W87)
-// QF sinistra:  M97(W89/W90), M98(W93/W94)
-// QF destra:    M99(W91/W92), M100(W95/W96)
-// SF: M101(W97/W98), M102(W99/W100)
-// Finale: M104(W101/W102)
-// 3° posto: M103(Perdente SF1/SF2)
-
-const SLOTS = {
-  // Round of 32 - SINISTRA (dall'alto)
-  M74:  { s1:'GER',      s2:'3ABCDF',  date:'28/06 22:30' },
-  M77:  { s1:'E',        s2:'3CDFGH',  date:'30/06 03:00' },
-  M73:  { s1:'RSA',      s2:'CAN',     date:'28/06 21:00' },
-  M75:  { s1:'1F',       s2:'MAR',     date:'30/06 03:00' },
-  M83:  { s1:'2K',       s2:'2L',      date:'03/07 01:00' },
-  M84:  { s1:'1H',       s2:'2J',      date:'02/07 21:00' },  // 1H/2J dalla foto
-  M81:  { s1:'USA',      s2:'3BEFIJ',  date:'02/07 02:00' },
-  M82:  { s1:'1G',       s2:'3AEHIJ',  date:'01/07 22:00' },
-
-  // Round of 32 - DESTRA (dall'alto)
-  M76:  { s1:'BRA',      s2:'2F',      date:'29/06 18:00' },
-  M78:  { s1:'2E',       s2:'2I',      date:'30/06 18:00' },
-  M79:  { s1:'MEX',      s2:'3CEFHI',  date:'01/07 03:00' },
-  M80:  { s1:'1L',       s2:'3EHIJK',  date:'01/07 18:00' },
-  M86:  { s1:'ARG',      s2:'2H',      date:'04/07 00:00' },
-  M88:  { s1:'2D',       s2:'2G',      date:'03/07 18:00' },
-  M85:  { s1:'SUI',      s2:'3EFGLIJ', date:'04/07 05:00' },
-  M87:  { s1:'2A',       s2:'3DEIJL',  date:'04/07 03:30' },
-
-  // Round of 16
-  M89:  { s1:'W74',  s2:'W77',  date:'05/07 22:00' },
-  M90:  { s1:'W73',  s2:'W75',  date:'05/07 22:00' },
-  M93:  { s1:'W83',  s2:'W84',  date:'06/07 21:00' },
-  M94:  { s1:'W81',  s2:'W82',  date:'07/07 21:00' },
-  M91:  { s1:'W76',  s2:'W78',  date:'05/07 22:00' },
-  M92:  { s1:'W79',  s2:'W80',  date:'06/07 22:00' },
-  M95:  { s1:'W86',  s2:'W88',  date:'07/07 22:00' },
-  M96:  { s1:'W85',  s2:'W87',  date:'07/07 03:30' },
-
-  // Quarti
-  M97:  { s1:'W89',  s2:'W90',  date:'09/07 22:00' },
-  M98:  { s1:'W93',  s2:'W94',  date:'10/07 22:00' },
-  M99:  { s1:'W91',  s2:'W92',  date:'09/07 22:00' },
-  M100: { s1:'W95',  s2:'W96',  date:'10/07 22:00' },
-
-  // Semifinali
-  M101: { s1:'W97',  s2:'W98',  date:'14/07 21:00' },
-  M102: { s1:'W99',  s2:'W100', date:'15/07 21:00' },
-
-  // Finale e 3° posto
-  M104: { s1:'W101', s2:'W102', date:'19/07 21:00' },
-  M103: { s1:'Perdente SF1', s2:'Perdente SF2', date:'18/07 21:00' },
+// Struttura ordinata del tabellone (sinistra→destra, alto→basso per coppia)
+const BRACKET = {
+  // Sinistra (R32 in coppie che alimentano lo stesso R16)
+  left: [
+    { r32: [{id:'M74', s1:'1E',  s2:'3ABCDF', apiId:537415},
+            {id:'M77', s1:'1I',  s2:'3CDFGH', apiId:null}],   r16id:'M89', r16apiId:537375 },
+    { r32: [{id:'M73', s1:'2C',  s2:'1D',     apiId:537417},
+            {id:'M75', s1:'1F',  s2:'2B',     apiId:537418}],  r16id:'M90', r16apiId:537376 },
+    { r32: [{id:'M83', s1:'2K',  s2:'2L',     apiId:null},
+            {id:'M84', s1:'1H',  s2:'2J',     apiId:null}],    r16id:'M93', r16apiId:537379 },
+    { r32: [{id:'M81', s1:'1B',  s2:'3BEFIJ', apiId:537421},
+            {id:'M82', s1:'1G',  s2:'3AEHIJ', apiId:null}],    r16id:'M94', r16apiId:537380 },
+  ],
+  // Destra
+  right: [
+    { r32: [{id:'M76', s1:'1C',  s2:'2F',     apiId:537423},
+            {id:'M78', s1:'2E',  s2:'2I',     apiId:null}],    r16id:'M91', r16apiId:537377 },
+    { r32: [{id:'M79', s1:'1A',  s2:'3CEFHI', apiId:537425},
+            {id:'M80', s1:'1L',  s2:'3EHIJK', apiId:null}],    r16id:'M92', r16apiId:537378 },
+    { r32: [{id:'M86', s1:'1J',  s2:'2H',     apiId:537427},
+            {id:'M88', s1:'2D',  s2:'2G',     apiId:null}],    r16id:'M95', r16apiId:537381 },
+    { r32: [{id:'M85', s1:'1K',  s2:'3EFGLJ', apiId:537429},
+            {id:'M87', s1:'2A',  s2:'3DEIJL', apiId:null}],    r16id:'M96', r16apiId:537382 },
+  ],
+  // Quarti (dal JSON: QUARTER_FINALS 537383-537386)
+  qfLeft:  [{id:'M97',  apiId:537383}, {id:'M98',  apiId:537384}],
+  qfRight: [{id:'M99',  apiId:537385}, {id:'M100', apiId:537386}],
+  // Semifinali (537387-537388), 3° posto (537389), Finale (537390)
+  sf1:  {id:'M101', apiId:537387},
+  sf2:  {id:'M102', apiId:537388},
+  third:{id:'M103', apiId:537389},
+  final:{id:'M104', apiId:537390},
 };
 
-// ─── STATO ───────────────────────────────────────────────────────────────────
 const API = '/.netlify/functions/api';
 let allMatches = [], pollTimer = null;
 
-// ─── TABS ────────────────────────────────────────────────────────────────────
 function switchTab(tab, el) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
@@ -385,7 +231,6 @@ function switchTab(tab, el) {
   if (tab === 'tabellone') setTimeout(drawLines, 80);
 }
 
-// ─── API ─────────────────────────────────────────────────────────────────────
 async function getMatches() {
   const r = await fetch(`${API}?type=matches`);
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -426,30 +271,52 @@ function buildGroupStandings(matches) {
   return result;
 }
 
+function getBestThirds(gs) {
+  const thirds = [];
+  Object.entries(gs).forEach(([gn,table])=>{
+    if(table.length>=3) thirds.push({...table[2], groupLetter: gn.replace('GROUP_','')});
+  });
+  return thirds.sort((a,b)=>{
+    if(b.points!==a.points) return b.points-a.points;
+    const gda=a.goalsFor-a.goalsAgainst, gdb=b.goalsFor-b.goalsAgainst;
+    if(gdb!==gda) return gdb-gda;
+    return b.goalsFor-a.goalsFor;
+  });
+}
+
+// Risolve uno slot testuale come "1A", "2B", "3ABCDF" nella squadra corrente
 function resolveSlot(code, gs) {
   if (!gs) return null;
+  if (!code) return null;
+  if (code.startsWith('W') || code.startsWith('Perdente')) return null;
+
   if (code.startsWith('3')) {
     const letters = code.substring(1).split('');
-    const allThirds = [];
-    Object.entries(gs).forEach(([gn, table]) => {
-      if (table.length >= 3) allThirds.push({...table[2], groupLetter: gn.replace('GROUP_','')});
-    });
-    allThirds.sort((a,b)=>{
-      if(b.points!==a.points) return b.points-a.points;
-      const gda=a.goalsFor-a.goalsAgainst, gdb=b.goalsFor-b.goalsAgainst;
-      if(gdb!==gda) return gdb-gda;
-      return b.goalsFor-a.goalsFor;
-    });
-    const top8 = allThirds.slice(0,8);
+    const top8 = getBestThirds(gs).slice(0,8);
     const match = top8.find(t => letters.includes(t.groupLetter));
     return match ? match.team : null;
   }
-  if (code.startsWith('W') || code.startsWith('Perdente')) return null;
   const pos = parseInt(code[0]) - 1;
   const letter = code[1];
   const group = gs[`GROUP_${letter}`];
   if (!group || group.length <= pos) return null;
   return group[pos].team;
+}
+
+// Trova una partita nel LAST_32 dall'API tramite id numerico
+function findApiMatch(apiId, allMatchesArr) {
+  if (!apiId) return null;
+  return allMatchesArr.find(m => m.id === apiId) || null;
+}
+
+// Trova una partita knockout cercando per le squadre
+function findKnockoutMatch(stage, t1, t2, allMatchesArr) {
+  if (!t1 || !t2) return null;
+  return allMatchesArr.find(m => {
+    if (m.stage !== stage) return false;
+    const ids = [m.homeTeam?.id, m.awayTeam?.id].filter(Boolean);
+    return ids.includes(t1.id) && ids.includes(t2.id);
+  }) || null;
 }
 
 // ─── RENDER GIRONI ───────────────────────────────────────────────────────────
@@ -480,18 +347,8 @@ function renderGroups(gs) {
   }).join('');
 }
 
-// ─── RENDER TERZE ────────────────────────────────────────────────────────────
 function renderBestThirds(gs) {
-  const thirds = [];
-  Object.entries(gs).forEach(([gn,table])=>{
-    if(table.length>=3) thirds.push({...table[2],group:gn,groupLetter:gn.replace('GROUP_','')});
-  });
-  thirds.sort((a,b)=>{
-    if(b.points!==a.points) return b.points-a.points;
-    const gda=a.goalsFor-a.goalsAgainst, gdb=b.goalsFor-b.goalsAgainst;
-    if(gdb!==gda) return gdb-gda;
-    return b.goalsFor-a.goalsFor;
-  });
+  const thirds = getBestThirds(gs);
   const c = document.getElementById('thirds-content');
   if (!thirds.length) { c.innerHTML='<div class="state-msg">Dati non ancora disponibili</div>'; return; }
   c.innerHTML = `<table class="thirds-table">
@@ -512,139 +369,177 @@ function renderBestThirds(gs) {
 }
 
 // ─── COSTRUZIONE CARD ────────────────────────────────────────────────────────
-function makeCard(matchId, gs, apiMatches, extraClass) {
-  const slot = SLOTS[matchId];
-  if (!slot) return '';
+function makeCard(label, s1code, s2code, apiMatch, gs, extraClass) {
+  // Risolvi slot → squadra reale
+  let t1 = resolveSlot(s1code, gs);
+  let t2 = resolveSlot(s2code, gs);
 
-  const t1 = resolveSlot(slot.s1, gs);
-  const t2 = resolveSlot(slot.s2, gs);
-
-  // Cerca nel live
-  let hg=null, ag=null, live=false, fin=false;
-  const apiM = apiMatches.find(m => {
-    if(m.stage==='GROUP_STAGE') return false;
-    if(t1&&t2) {
-      if(m.homeTeam?.id===t1.id && m.awayTeam?.id===t2.id) return true;
-      if(m.homeTeam?.id===t2.id && m.awayTeam?.id===t1.id) return true;
-    }
-    return false;
-  });
-  if (apiM) {
-    hg = apiM.score?.fullTime?.home;
-    ag = apiM.score?.fullTime?.away;
-    live = apiM.status==='IN_PLAY'||apiM.status==='PAUSED';
-    fin  = apiM.status==='FINISHED';
+  // Se l'API ha già la squadra (per LAST_32 con apiMatch), usa quella
+  if (apiMatch) {
+    if (apiMatch.homeTeam?.id) t1 = apiMatch.homeTeam;
+    if (apiMatch.awayTeam?.id) t2 = apiMatch.awayTeam;
   }
 
-  const t1wins = fin && hg!==null && hg > ag;
-  const t2wins = fin && ag!==null && ag > hg;
+  let hg=null, ag=null, live=false, fin=false, dateStr='';
+  if (apiMatch) {
+    const ft = apiMatch.score?.fullTime;
+    hg = ft?.home ?? null;
+    ag = ft?.away ?? null;
+    live = ['IN_PLAY','PAUSED','LIVE'].includes(apiMatch.status);
+    fin  = apiMatch.status === 'FINISHED';
+    if (apiMatch.utcDate) {
+      const d = new Date(apiMatch.utcDate);
+      dateStr = d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'})
+               +' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
+    }
+  }
+
+  const t1wins = fin && hg !== null && hg > ag;
+  const t2wins = fin && ag !== null && ag > hg;
 
   function row(team, slotCode, score, isWin) {
     const name = team ? (team.shortName||team.tla||team.name) : null;
-    const flag = team?.crest
+    const flagEl = team?.crest
       ? `<img class="bk-flag" src="${team.crest}" alt="${team.tla||''}" onerror="this.outerHTML='<div class=bk-flag-ph></div>'">`
       : '<div class="bk-flag-ph"></div>';
     const nameEl = name
       ? `<span class="bk-name${isWin?' winner':''}">${name}</span>`
       : `<span class="bk-name slot">${slotCode}</span>`;
-    const scoreEl = (score!==null&&score!==undefined) ? `<span class="bk-score">${score}</span>` : '';
-    return `<div class="bk-row${isWin?' win':''}">${flag}${nameEl}${scoreEl}</div>`;
+    const scoreEl = (score!==null && score!==undefined && fin) ? `<span class="bk-score">${score}</span>` : '';
+    return `<div class="bk-row${isWin?' win':''}">${flagEl}${nameEl}${scoreEl}</div>`;
   }
 
   const cls = `bk-card${extraClass?' '+extraClass:''}${live?' live':''}`;
-  return `<div class="${cls}" id="${matchId}">
+  return `<div class="${cls}" id="${label}">
     <div class="bk-card-head">
-      <span class="bk-card-id">${matchId}</span>
-      ${live?'<span class="bk-live-tag">● LIVE</span>':fin?'<span class="bk-ft-tag">FT</span>':`<span class="bk-card-date">${slot.date}</span>`}
+      <span class="bk-card-id">${label}</span>
+      ${live?'<span class="bk-live-tag">● LIVE</span>':fin?'<span class="bk-ft-tag">FT</span>':`<span class="bk-card-date">${dateStr}</span>`}
     </div>
-    ${row(t1, slot.s1, hg, t1wins)}
-    ${row(t2, slot.s2, ag, t2wins)}
+    ${row(t1, s1code, hg, t1wins)}
+    ${row(t2, s2code, ag, t2wins)}
+  </div>`;
+}
+
+// Card per i round successivi al R32 (usa solo dati API, senza slot)
+function makeApiCard(label, apiMatch, s1label, s2label, extraClass) {
+  let t1 = apiMatch?.homeTeam?.id ? apiMatch.homeTeam : null;
+  let t2 = apiMatch?.awayTeam?.id ? apiMatch.awayTeam : null;
+  let hg=null, ag=null, live=false, fin=false, dateStr='';
+  if (apiMatch) {
+    const ft = apiMatch.score?.fullTime;
+    hg = ft?.home ?? null; ag = ft?.away ?? null;
+    live = ['IN_PLAY','PAUSED','LIVE'].includes(apiMatch.status);
+    fin  = apiMatch.status === 'FINISHED';
+    if (apiMatch.utcDate) {
+      const d = new Date(apiMatch.utcDate);
+      dateStr = d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit'})
+               +' '+d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
+    }
+  }
+  const t1wins = fin && hg!==null && hg>ag;
+  const t2wins = fin && ag!==null && ag>hg;
+
+  function row(team, lbl, score, isWin) {
+    const name = team ? (team.shortName||team.tla||team.name) : null;
+    const flagEl = team?.crest
+      ? `<img class="bk-flag" src="${team.crest}" alt="${team.tla||''}" onerror="this.outerHTML='<div class=bk-flag-ph></div>'">`
+      : '<div class="bk-flag-ph"></div>';
+    const nameEl = name
+      ? `<span class="bk-name${isWin?' winner':''}">${name}</span>`
+      : `<span class="bk-name slot">${lbl}</span>`;
+    const scoreEl = (score!==null && score!==undefined && fin) ? `<span class="bk-score">${score}</span>` : '';
+    return `<div class="bk-row${isWin?' win':''}">${flagEl}${nameEl}${scoreEl}</div>`;
+  }
+
+  const cls = `bk-card${extraClass?' '+extraClass:''}${live?' live':''}`;
+  return `<div class="${cls}" id="${label}">
+    <div class="bk-card-head">
+      <span class="bk-card-id">${label}</span>
+      ${live?'<span class="bk-live-tag">● LIVE</span>':fin?'<span class="bk-ft-tag">FT</span>':`<span class="bk-card-date">${dateStr}</span>`}
+    </div>
+    ${row(t1, s1label, hg, t1wins)}
+    ${row(t2, s2label, ag, t2wins)}
   </div>`;
 }
 
 // ─── RENDER TABELLONE ────────────────────────────────────────────────────────
-function renderBracket(gs, apiMatches) {
+function renderBracket(gs, matches) {
   const main = document.getElementById('bk-main');
 
-  // Colonna R32 sinistra (4 coppie, 8 partite)
-  const r32L = `<div class="bk-col" id="col-r32l">
-    <div class="bk-col-label">Round of 32</div>
-    <div style="display:flex;flex-direction:column;gap:18px">
-      <div>${makeCard('M74',gs,apiMatches)}${makeCard('M77',gs,apiMatches)}</div>
-      <div>${makeCard('M73',gs,apiMatches)}${makeCard('M75',gs,apiMatches)}</div>
-      <div>${makeCard('M83',gs,apiMatches)}${makeCard('M84',gs,apiMatches)}</div>
-      <div>${makeCard('M81',gs,apiMatches)}${makeCard('M82',gs,apiMatches)}</div>
-    </div>
-  </div>`;
+  function am(apiId) { return findApiMatch(apiId, matches); }
 
-  // R16 sinistra
-  const r16L = `<div class="bk-col" id="col-r16l">
-    <div class="bk-col-label">Round of 16</div>
-    <div style="display:flex;flex-direction:column;gap:48px;padding-top:26px">
-      ${makeCard('M89',gs,apiMatches)}
-      ${makeCard('M90',gs,apiMatches)}
-      ${makeCard('M93',gs,apiMatches)}
-      ${makeCard('M94',gs,apiMatches)}
-    </div>
-  </div>`;
+  // Altezze specifiche per allineare ogni coppia di R32 con la sua R16
+  // Ogni gruppo di 2 R32 occupa ~120px, le 4 coppie ~480px totale
+  // R16 ha 4 card distribuite uniformemente
 
-  // QF sinistra
-  const qfL = `<div class="bk-col" id="col-qfl">
-    <div class="bk-col-label">Quarti</div>
-    <div style="display:flex;flex-direction:column;gap:110px;padding-top:62px">
-      ${makeCard('M97',gs,apiMatches)}
-      ${makeCard('M98',gs,apiMatches)}
-    </div>
-  </div>`;
+  function buildR32Col(groups) {
+    return `<div class="bk-col">
+      <div class="bk-col-label">Round of 32</div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        ${groups.map(g => `
+          <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:14px">
+            ${makeCard(g.r32[0].id, g.r32[0].s1, g.r32[0].s2, am(g.r32[0].apiId), gs)}
+            ${makeCard(g.r32[1].id, g.r32[1].s1, g.r32[1].s2, am(g.r32[1].apiId), gs)}
+          </div>`).join('')}
+      </div>
+    </div>`;
+  }
 
-  // Centro
-  const center = `<div class="bk-center" id="col-center">
+  function buildR16Col(groups, side) {
+    // Offset iniziale per centrare visivamente ogni card rispetto alla sua coppia
+    const topPad = 30; // allinea prima card al centro della prima coppia R32
+    return `<div class="bk-col">
+      <div class="bk-col-label">Round of 16</div>
+      <div style="display:flex;flex-direction:column;gap:14px;padding-top:${topPad}px">
+        ${groups.map((g,i) => `
+          <div style="margin-bottom:${i<3?'30px':'0'}">
+            ${makeApiCard(g.r16id, am(g.r16apiId), 'W'+g.r32[0].id.substring(1), 'W'+g.r32[1].id.substring(1))}
+          </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  function buildQFCol(qfArr, sfLabel) {
+    return `<div class="bk-col">
+      <div class="bk-col-label">Quarti</div>
+      <div style="display:flex;flex-direction:column;gap:14px;padding-top:78px">
+        ${qfArr.map(qf => `
+          <div style="margin-bottom:94px">
+            ${makeApiCard(qf.id, am(qf.apiId), 'W R16', 'W R16')}
+          </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  const leftR32  = buildR32Col(BRACKET.left);
+  const leftR16  = buildR16Col(BRACKET.left);
+  const leftQF   = buildQFCol(BRACKET.qfLeft);
+
+  const rightR32 = buildR32Col(BRACKET.right);
+  const rightR16 = buildR16Col(BRACKET.right);
+  const rightQF  = buildQFCol(BRACKET.qfRight);
+
+  const sf1  = makeApiCard('M101', am(BRACKET.sf1.apiId), 'W QF1', 'W QF2');
+  const sf2  = makeApiCard('M102', am(BRACKET.sf2.apiId), 'W QF3', 'W QF4');
+  const fin  = makeApiCard('M104', am(BRACKET.final.apiId), 'W SF1', 'W SF2', 'final-card');
+  const trd  = makeApiCard('M103', am(BRACKET.third.apiId), 'Perdente SF1', 'Perdente SF2', 'third-card');
+
+  const center = `<div class="bk-center">
     <div class="bk-sf-label">Semifinali</div>
-    ${makeCard('M101',gs,apiMatches)}
+    <div style="margin-bottom:8px">${sf1}</div>
     <div class="bk-trophy">🏆</div>
     <div class="bk-final-label">Finale</div>
-    ${makeCard('M104',gs,apiMatches,'final-card')}
+    <div style="margin:2px 0 6px">${fin}</div>
     <div class="bk-third-label">3° Posto</div>
-    ${makeCard('M103',gs,apiMatches,'third-card')}
-    <div class="bk-sf-label" style="margin-top:10px">Semifinali</div>
-    ${makeCard('M102',gs,apiMatches)}
-  </div>`;
-
-  // QF destra
-  const qfR = `<div class="bk-col" id="col-qfr">
-    <div class="bk-col-label">Quarti</div>
-    <div style="display:flex;flex-direction:column;gap:110px;padding-top:62px">
-      ${makeCard('M99',gs,apiMatches)}
-      ${makeCard('M100',gs,apiMatches)}
-    </div>
-  </div>`;
-
-  // R16 destra
-  const r16R = `<div class="bk-col" id="col-r16r">
-    <div class="bk-col-label">Round of 16</div>
-    <div style="display:flex;flex-direction:column;gap:48px;padding-top:26px">
-      ${makeCard('M91',gs,apiMatches)}
-      ${makeCard('M92',gs,apiMatches)}
-      ${makeCard('M95',gs,apiMatches)}
-      ${makeCard('M96',gs,apiMatches)}
-    </div>
-  </div>`;
-
-  // R32 destra
-  const r32R = `<div class="bk-col" id="col-r32r">
-    <div class="bk-col-label">Round of 32</div>
-    <div style="display:flex;flex-direction:column;gap:18px">
-      <div>${makeCard('M76',gs,apiMatches)}${makeCard('M78',gs,apiMatches)}</div>
-      <div>${makeCard('M79',gs,apiMatches)}${makeCard('M80',gs,apiMatches)}</div>
-      <div>${makeCard('M86',gs,apiMatches)}${makeCard('M88',gs,apiMatches)}</div>
-      <div>${makeCard('M85',gs,apiMatches)}${makeCard('M87',gs,apiMatches)}</div>
-    </div>
+    <div style="margin-bottom:8px">${trd}</div>
+    <div class="bk-sf-label">Semifinali</div>
+    ${sf2}
   </div>`;
 
   main.innerHTML = `
     <svg class="lines" id="bk-svg"></svg>
-    <div style="display:flex;align-items:flex-start;gap:6px">
-      ${r32L}${r16L}${qfL}${center}${qfR}${r16R}${r32R}
+    <div style="display:flex;align-items:flex-start;gap:4px">
+      ${leftR32}${leftR16}${leftQF}${center}${rightQF}${rightR16}${rightR32}
     </div>`;
 
   setTimeout(drawLines, 60);
@@ -655,12 +550,11 @@ function drawLines() {
   const svg = document.getElementById('bk-svg');
   const wrap = svg?.parentElement;
   if (!svg || !wrap) return;
-
   const wRect = wrap.getBoundingClientRect();
   svg.setAttribute('viewBox', `0 0 ${wRect.width} ${wRect.height}`);
   svg.innerHTML = '';
 
-  function line(fromId, toId, fromRight) {
+  function connect(fromId, toId, fromRight) {
     const f = document.getElementById(fromId);
     const t = document.getElementById(toId);
     if (!f || !t) return;
@@ -668,44 +562,42 @@ function drawLines() {
     const tR = t.getBoundingClientRect();
     const x1 = fromRight ? fR.right - wRect.left : fR.left - wRect.left;
     const y1 = fR.top + fR.height/2 - wRect.top;
-    const x2 = fromRight ? tR.left  - wRect.left : tR.right - wRect.left;
+    const x2 = fromRight ? tR.left - wRect.left : tR.right - wRect.left;
     const y2 = tR.top + tR.height/2 - wRect.top;
     const mx = (x1+x2)/2;
     const p = document.createElementNS('http://www.w3.org/2000/svg','path');
     p.setAttribute('d', `M${x1},${y1} H${mx} V${y2} H${x2}`);
-    p.setAttribute('fill','none');
-    p.setAttribute('stroke','#c8d8ee');
-    p.setAttribute('stroke-width','1.5');
-    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('fill','none'); p.setAttribute('stroke','#c8d8ee');
+    p.setAttribute('stroke-width','1.5'); p.setAttribute('stroke-linecap','round');
     svg.appendChild(p);
   }
 
   // SINISTRA: R32 → R16
   [['M74','M89'],['M77','M89'],['M73','M90'],['M75','M90'],
-   ['M83','M93'],['M84','M93'],['M81','M94'],['M82','M94']].forEach(([f,t])=>line(f,t,true));
+   ['M83','M93'],['M84','M93'],['M81','M94'],['M82','M94']].forEach(([f,t])=>connect(f,t,true));
   // R16 → QF
-  [['M89','M97'],['M90','M97'],['M93','M98'],['M94','M98']].forEach(([f,t])=>line(f,t,true));
+  [['M89','M97'],['M90','M97'],['M93','M98'],['M94','M98']].forEach(([f,t])=>connect(f,t,true));
   // QF → SF
-  [['M97','M101'],['M98','M101']].forEach(([f,t])=>line(f,t,true));
+  [['M97','M101'],['M98','M101']].forEach(([f,t])=>connect(f,t,true));
   // SF → Finale
-  line('M101','M104',true);
+  connect('M101','M104',true);
 
   // DESTRA: R32 → R16
   [['M76','M91'],['M78','M91'],['M79','M92'],['M80','M92'],
-   ['M86','M95'],['M88','M95'],['M85','M96'],['M87','M96']].forEach(([f,t])=>line(f,t,false));
+   ['M86','M95'],['M88','M95'],['M85','M96'],['M87','M96']].forEach(([f,t])=>connect(f,t,false));
   // R16 → QF
-  [['M91','M99'],['M92','M99'],['M95','M100'],['M96','M100']].forEach(([f,t])=>line(f,t,false));
+  [['M91','M99'],['M92','M99'],['M95','M100'],['M96','M100']].forEach(([f,t])=>connect(f,t,false));
   // QF → SF
-  [['M99','M102'],['M100','M102']].forEach(([f,t])=>line(f,t,false));
-  // SF → Finale
-  line('M102','M104',false);
+  [['M99','M102'],['M100','M102']].forEach(([f,t])=>connect(f,t,false));
+  connect('M102','M104',false);
 }
 
 // ─── TIMESTAMP & POLL ────────────────────────────────────────────────────────
 function updateTimestamp() {
-  document.getElementById('last-update').textContent = 'Agg. '+new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  document.getElementById('last-update').textContent =
+    'Agg. '+new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 }
-function hasLiveMatches() { return allMatches.some(m=>m.status==='IN_PLAY'||m.status==='PAUSED'); }
+function hasLiveMatches() { return allMatches.some(m=>['IN_PLAY','PAUSED','LIVE'].includes(m.status)); }
 
 async function refresh() {
   try {
